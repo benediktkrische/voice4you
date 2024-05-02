@@ -1,7 +1,9 @@
 # voice4you
 
 Looking for an app that can talk for you? Meet voice4you! It's made especially for people who find it hard to speak. An intuitive interface and friendly appearance come together with cutting edge technology.
-<br> <br>**Benedikt Krische**, a student at HTL Mössingerstraße (htl-klu.at), created this app and won the `#SwiftStudentChallenge2024` with it! voice4you is here to make communication easier for everyone, whether you can speak or not. Let's make talking easier together!
+<br> <br>**Benedikt Krische**, a student at HTL Mössingerstraße (htl-klu.at), created this app and won the `#SwiftStudentChallenge2024` with it! voice4you is here to make communication easier for everyone, whether you can speak or not. Let's make talking easier together! <br>
+### Appstore: [voice4you](https://apps.apple.com/at/app/voice4you/id6497950747)
+<br>
 
 ## Features:
 * Let the app talk for you
