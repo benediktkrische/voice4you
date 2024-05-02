@@ -95,3 +95,8 @@ ehthumbs.db
 Icon?
 Thumbs.db
 *.DS_Store
+
+#tests
+voice4youTests/
+voice4youUITests/
+
