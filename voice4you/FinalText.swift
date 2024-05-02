@@ -71,13 +71,13 @@ struct FinalText: View {
                             "Speak it!",
                             systemImage: "text.bubble"
                         )
+                        .frame(maxWidth: .infinity)
+                        .padding()
+                        .background(Color("tabBar"))
+                        .foregroundColor(.white)
+                        .cornerRadius(10)
+                        .padding(.horizontal)
                     }
-                    .frame(maxWidth: .infinity)
-                    .padding()
-                    .background(Color("tabBar"))
-                    .foregroundColor(.white)
-                    .cornerRadius(10)
-                    .padding(.horizontal)
                 }
                 .background(Color("bgd"))
             }
