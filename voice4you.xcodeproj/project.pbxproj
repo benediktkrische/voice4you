@@ -50,9 +50,6 @@
 		A3F88C902BBDDBA700867FD0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A3F88C922BBDDBA700867FD0 /* voice4you.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = voice4you.entitlements; sourceTree = "<group>"; };
 		A3F88C942BBDDBA700867FD0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		A3F88C9E2BBDDBA700867FD0 /* voice4youTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = voice4youTests.swift; sourceTree = "<group>"; };
-		A3F88CA82BBDDBA700867FD0 /* voice4youUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = voice4youUITests.swift; sourceTree = "<group>"; };
-		A3F88CAA2BBDDBA700867FD0 /* voice4youUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = voice4youUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		A3F88CB82BBDDD3300867FD0 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		A3F88CB92BBDDD3300867FD0 /* TabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
 		A3F88CBA2BBDDD3300867FD0 /* TabPage0.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabPage0.swift; sourceTree = "<group>"; };
@@ -108,8 +105,6 @@
 			isa = PBXGroup;
 			children = (
 				A3F88C892BBDDBA600867FD0 /* voice4you */,
-				A3F88C9D2BBDDBA700867FD0 /* voice4youTests */,
-				A3F88CA72BBDDBA700867FD0 /* voice4youUITests */,
 				A3F88C882BBDDBA600867FD0 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -155,23 +150,6 @@
 				A3F88C942BBDDBA700867FD0 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		A3F88C9D2BBDDBA700867FD0 /* voice4youTests */ = {
-			isa = PBXGroup;
-			children = (
-				A3F88C9E2BBDDBA700867FD0 /* voice4youTests.swift */,
-			);
-			path = voice4youTests;
-			sourceTree = "<group>";
-		};
-		A3F88CA72BBDDBA700867FD0 /* voice4youUITests */ = {
-			isa = PBXGroup;
-			children = (
-				A3F88CA82BBDDBA700867FD0 /* voice4youUITests.swift */,
-				A3F88CAA2BBDDBA700867FD0 /* voice4youUITestsLaunchTests.swift */,
-			);
-			path = voice4youUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -423,7 +401,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				MARKETING_VERSION = 1.2;
+				MARKETING_VERSION = 1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = at.htlklu.voice4you;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
@@ -465,7 +443,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				MARKETING_VERSION = 1.2;
+				MARKETING_VERSION = 1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = at.htlklu.voice4you;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;

@@ -47,6 +47,7 @@ struct Settings: View {
 struct VoiceSettings: View {
     @EnvironmentObject var globals: Globals
     @State var voices: [AVSpeechSynthesisVoice]
+@State var acceptableVoices = ["Gordon","Karen", "Catherine", "Daniel", "Martha", "Arthur", "Moira", "Rishi", "Nicky", "Aaron", "Samantha", "Tessa"]
     
     var body: some View {
         Section(header: Text("Voice")){
@@ -54,7 +55,7 @@ struct VoiceSettings: View {
                 VStack{
                     Picker(selection: $globals.selectedVoice, label: Text("select a voice")) {
                         ForEach(voices, id: \.self) { voice in
-                            if(voice.language.contains("en")){
+                            if(voice.language.contains("en") && acceptableVoices.contains(voice.name)){
                                 Text(voice.name).tag(voice)
                             }
                         }
@@ -67,7 +68,9 @@ struct VoiceSettings: View {
                             .padding()
                     }
                     Spacer()
+                        
                 }
+                .background(Color("bgd"))
             }, label: {
                 HStack{
                     Label("Your voice", systemImage: "waveform")
