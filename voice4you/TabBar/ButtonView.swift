@@ -12,13 +12,12 @@ struct ButtonView: View {
     @State var word: SentenceWord
     @State var changingWord = ""
     @State var isShowingChangeAlert = false
-    @State var uuid: UUID?
+    @State var isShowingConfirmationAlert = false
     
     var body: some View {
         Button(action: {
-            uuid = word.uuid
             changingWord = word.name
-            isShowingChangeAlert = true
+            isShowingConfirmationAlert = true
         }, label: {
             Text(word.name)
                 .padding(.horizontal, 10)
@@ -30,21 +29,25 @@ struct ButtonView: View {
                 .foregroundStyle(Color.primary)
         })
         .opacity(word.hidden ? 0.5 : 1)
-        .alert("Change the Word", isPresented: $isShowingChangeAlert) {
-            TextField("new Word", text: $changingWord)
-            Button("Cancel") {
-                isShowingChangeAlert = false
+        .confirmationDialog("Delete Word", isPresented: $isShowingConfirmationAlert) {
+            Button("Change Word") {
+                isShowingChangeAlert = true
             }
-            Button(action: {
+            Button("Delete Word", role: .destructive) {
                 globals.generator.impactOccurred()
                 globals.undoSentence.append(globals.sentence)
                 withAnimation(.bouncy){
-                    globals.sentence.words.removeAll { $0.uuid == uuid }
+                    globals.sentence.words.removeAll { $0.uuid == word.uuid }
                 }
                 isShowingChangeAlert = false
-            }, label: {
-                Text("Delete")
-            })
+            }
+            
+        }
+        .alert("Change the Word", isPresented: $isShowingChangeAlert) {
+            TextField("new Word", text: $changingWord)
+            Button("Cancel", role: .cancel) {
+                isShowingChangeAlert = false
+            }
             Button(action: {
                 var changed = false
                 if(changingWord != word.name){
@@ -58,13 +61,14 @@ struct ButtonView: View {
                 if(changed){
                     globals.generator.impactOccurred()
                 }
-                globals.sentence.words.insert(SentenceWord(name: changingWord, uuid: UUID()), at: globals.sentence.words.firstIndex { $0.uuid == uuid}!)
-                globals.sentence.words.removeAll { $0.uuid == uuid }
+                globals.sentence.words.insert(SentenceWord(name: changingWord, uuid: UUID()), at: globals.sentence.words.firstIndex { $0.uuid == word.uuid}!)
+                globals.sentence.words.removeAll { $0.uuid == word.uuid }
                 isShowingChangeAlert = false
             }, label: {
                 Text("Safe")
             })
         }
+ 
     }
 }
 
