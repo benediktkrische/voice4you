@@ -10,32 +10,31 @@ import AVFoundation
 
 struct Settings: View {
     @EnvironmentObject var globals: Globals
-    let voices = AVSpeechSynthesisVoice.speechVoices()
     var body: some View {
-        VStack{
-            NavigationStack{
-                List{
-                    VoiceSettings(voices: voices)
+        NavigationStack{
+            ScrollView{
+                VStack{
+                    YourVoiceView()
+                    VoiceSpeedView()
+                    Spacer()
                 }
-                .scrollContentBackground(.hidden)
-                .background(Color("bgd"))
-                .navigationTitle("Settings")
-                .toolbarColorScheme(.dark, for: .navigationBar)
-                .navigationBarTitleDisplayMode(.inline)
-                .navigationBarItems(trailing: Button(action: {
-                    dismiss()
-                }, label: {
-                    Image(systemName: "xmark")
-                        .foregroundStyle(.white)
-                        .fontWeight(.bold)
-                })
-                )
-                .toolbarBackground(Color("tabBar"), for: .navigationBar)
-                .toolbarBackground(.visible, for: .navigationBar)
-                
             }
+            .scrollContentBackground(.hidden)
+            .background(Color("bgd"))
+            .navigationTitle("Settings")
+            .toolbarColorScheme(.dark, for: .navigationBar)
+            .navigationBarTitleDisplayMode(.inline)
+            .navigationBarItems(trailing: Button(action: {
+                dismiss()
+            }, label: {
+                Image(systemName: "xmark")
+                    .foregroundStyle(.white)
+                    .fontWeight(.bold)
+            })
+            )
+            .toolbarBackground(Color("tabBar"), for: .navigationBar)
+            .toolbarBackground(.visible, for: .navigationBar)
         }
-        .background(Color("bgd"))
         .accentColor(Color("tabBar"))
     }
     
@@ -46,36 +45,25 @@ struct Settings: View {
 
 struct VoiceSettings: View {
     @EnvironmentObject var globals: Globals
-    @State var voices: [AVSpeechSynthesisVoice]
-@State var acceptableVoices = ["Gordon","Karen", "Catherine", "Daniel", "Martha", "Arthur", "Moira", "Rishi", "Nicky", "Aaron", "Samantha", "Tessa"]
     
     var body: some View {
         Section(header: Text("Voice")){
             NavigationLink(destination: {
                 VStack{
-                    Picker(selection: $globals.selectedVoice, label: Text("select a voice")) {
-                        ForEach(voices, id: \.self) { voice in
-                            if(voice.language.contains("en") && acceptableVoices.contains(voice.name)){
-                                Text(voice.name).tag(voice)
-                            }
-                        }
-                    }
-                    .pickerStyle(.inline)
-                    HStack{
-                        Text("Here you can change your voice. Try them out, to find which best suits you")
-                            .font(.caption)
-                            .foregroundStyle(.secondary)
-                            .padding()
-                    }
                     Spacer()
-                        
+                    YourVoiceView(showText: true)
+                    Spacer()
                 }
                 .background(Color("bgd"))
+                .navigationTitle("Change your voice")
+                .toolbarColorScheme(.dark, for: .navigationBar)
+                .navigationBarTitleDisplayMode(.large)
+                .toolbarBackground(Color("tabBar"), for: .navigationBar)
+                .toolbarBackground(.visible, for: .navigationBar)
             }, label: {
                 HStack{
                     Label("Your voice", systemImage: "waveform")
                         .foregroundStyle(.primary)
-                    
                     Spacer()
                     Text(globals.selectedVoice.name)
                         .foregroundStyle(Color(UIColor(.secondary)))
@@ -83,22 +71,16 @@ struct VoiceSettings: View {
             })
             NavigationLink(destination: {
                 VStack{
-                    HStack{
-                        Image(systemName: "tortoise.fill")
-                            .foregroundStyle(Color("tabBar"))
-                        Slider(value: $globals.rate, in: 0.5...2, step: 0.1)
-                            .accentColor(Color("tabBar"))
-                        Image(systemName: "hare.fill")
-                            .foregroundStyle(Color("tabBar"))
-                    }.padding()
-                    HStack{
-                        Text("Here you can change the speed of your voice. Try different speeds, to find which best suits you")
-                            .font(.caption)
-                            .foregroundStyle(.secondary)
-                            .padding()
-                    }
+                    Spacer()
+                    VoiceSpeedView(showText: true)
                     Spacer()
                 }
+                .background(Color("bgd"))
+                .navigationTitle("Change your voice")
+                .toolbarColorScheme(.dark, for: .navigationBar)
+                .navigationBarTitleDisplayMode(.large)
+                .toolbarBackground(Color("tabBar"), for: .navigationBar)
+                .toolbarBackground(.visible, for: .navigationBar)
             }, label: {
                 HStack{
                     Label("Voice Speed", systemImage: "speedometer")
@@ -109,10 +91,120 @@ struct VoiceSettings: View {
                 }
             })
         }
+        
+    }
+}
+
+struct YourVoiceView: View {
+    @EnvironmentObject var globals: Globals
+    @State var voices: [AVSpeechSynthesisVoice] = AVSpeechSynthesisVoice.speechVoices()
+    @State var acceptableVoices = ["Gordon","Karen", "Catherine", "Daniel", "Martha", "Arthur", "Moira", "Rishi", "Nicky", "Aaron", "Samantha", "Tessa"]
+    @State var isAlert = false
+    @State var showText = false
+    
+    var body: some View {
+        if(!showText){
+            HStack{
+                Label("YOUR VOICE", systemImage: "info.circle")
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+                    .padding(.horizontal, 30)
+                    .onTapGesture {
+                        isAlert.toggle()
+                    }
+                Spacer()
+            }
+            
+            .padding(.top)
+        }
+        HStack{
+            Picker(selection: $globals.selectedVoice, label: Text("select a voice")) {
+                ForEach(voices, id: \.self) { voice in
+                    if(voice.language.contains("en") && acceptableVoices.contains(voice.name)){
+                        Text(voice.name).tag(voice)
+                    }
+                }
+            }
+            .pickerStyle(.inline)
+            .background(Color(UIColor.systemBackground))
+        }
+        .clipShape(RoundedRectangle(cornerRadius: 10))
+        .padding(.horizontal)
+        .alert("Info", isPresented: $isAlert, actions: {
+            Button("OK", role: .cancel) { }
+        }, message: {
+            Text("Here you can change your voice. Try them out, to find which suits you best.")
+        })
+        if(showText){
+            Text("Here you can change your voice. Try them out, to find which suits you best.")
+                .padding(.horizontal, 25)
+                .font(.caption)
+                .foregroundStyle(.secondary)
+        }
+    }
+}
+
+struct VoiceSpeedView: View {
+    @EnvironmentObject var globals: Globals
+    @State var isEditing = false
+    @State var isAlert = false
+    @State var showText = false
+    
+    var body: some View {
+        VStack{
+            if(!showText){
+                HStack{
+                    Label("YOUR RATE", systemImage: "info.circle")
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                        .padding(.horizontal, 30)
+                        .onTapGesture {
+                            isAlert.toggle()
+                        }
+                    Spacer()
+                }
+                .padding(.top)
+            }
+            VStack{
+                VStack{
+                    HStack{
+                        Image(systemName: "tortoise.fill")
+                            .foregroundStyle(Color("tabBar"))
+                        Slider(value: $globals.rate, in: 0.5...1.5, step: 0.1, onEditingChanged: { editing in
+                            isEditing = editing
+                        })
+                        .accentColor(Color("tabBar"))
+                        Image(systemName: "hare.fill")
+                            .foregroundStyle(Color("tabBar"))
+                    }
+                    Text("\(globals.rate.magnitude, specifier: "%.1f")")
+                        .foregroundColor(Color("tabBar"))
+                        .font(.title2)
+                }
+                .padding()
+                .background(Color(UIColor.systemBackground))
+            }
+            .clipShape(RoundedRectangle(cornerRadius: 10))
+            .padding(.horizontal)
+            .alert("Info", isPresented: $isAlert, actions: {
+                Button("OK", role: .cancel) { }
+            }, message: {
+                Text("Here you can change the speed of your voice. Try different speeds, to find which suits you best")
+            })
+            if(showText){
+                Text("Here you can change the speed of your voice. Try different speeds, to find which suits you best")
+                    .padding(.horizontal, 25)
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+            }
+        }
+        .background(Color("bgd"))
     }
 }
 
 #Preview {
-    Settings()
+    FinalText()
         .environmentObject(Globals())
+    //Settings()
+    //    .environmentObject(Globals())
 }

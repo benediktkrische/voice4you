@@ -14,16 +14,15 @@ struct FinalText: View {
     @EnvironmentObject var globals: Globals
     @State var text: String = ""
     @State var progress: Double = 0
-    @State var promttf = ""
-    @State var Answer = ""
-    @State var degrees = 0.0
+    @State var isButtonEnabled = true
+    @State var isProgressbarVisible = false
     
     private let voices = AVSpeechSynthesisVoice.speechVoices()
     var body: some View {
         VStack{
             NavigationStack{
                 List{
-                    VoiceSettings(voices: voices)
+                    VoiceSettings()
                     Section(header: Text("your sentence")){
                         VStack(){
                             Text(globals.sentence.wordsAsString.joined(separator: " "))
@@ -57,15 +56,19 @@ struct FinalText: View {
                 }
                 VStack{
                     Spacer()
-                    HStack(){
-                        Spacer()
+                    if(isProgressbarVisible){
                         ProgressView(value: progress)
+                            .frame(height: 20)
                             .progressViewStyle(.linear)
                             .accentColor(Color("tabBar"))
-                        Spacer()
+                            .padding(.horizontal)
                     }
                     Button {
-                        speakText(text)
+                        if(isButtonEnabled){
+                            isButtonEnabled = false
+                            speakText(text)
+                            globals.generator.impactOccurred()
+                        }
                     } label: {
                         Label(
                             "Speak it!",
@@ -74,10 +77,12 @@ struct FinalText: View {
                         .frame(maxWidth: .infinity)
                         .padding()
                         .background(Color("tabBar"))
-                        .foregroundColor(.white)
+                        .foregroundColor(isButtonEnabled ? .white : .gray)
                         .cornerRadius(10)
                         .padding(.horizontal)
                     }
+                    .disabled(!isButtonEnabled)
+                    
                 }
                 .background(Color("bgd"))
             }
@@ -94,9 +99,25 @@ struct FinalText: View {
         globals.tts.speak(text)
         Task {
             for await prog in globals.tts.speakingProgress() {
-                progress = prog
+                withAnimation(.bouncy){
+                    progress = prog
+                }
+                if prog == 1.0 {
+                    withAnimation(.linear){
+                        isProgressbarVisible = false
+                    }
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                        isButtonEnabled = true
+                    }
+                } else {
+                    withAnimation(.linear){
+                        isProgressbarVisible = true
+                        isButtonEnabled = false
+                    }
+                }
             }
         }
+        progress = 0
     }
 }
 
