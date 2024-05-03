@@ -28,7 +28,7 @@ struct CustomWordButton: View {
         })
         .alert("Custom Word", isPresented: $isShowingAlert) {
             TextField("Enter your word", text: $answerText)
-            Button("Cancel") {
+            Button("Cancel", role: .cancel) {
                 isShowingAlert = false
             }
             Button(action: {
@@ -45,4 +45,5 @@ struct CustomWordButton: View {
 
 #Preview {
     CustomWordButton()
+        .environmentObject(Globals())
 }
