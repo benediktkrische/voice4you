@@ -5,6 +5,9 @@ Looking for an app that can talk for you? Meet voice4you! It's made especially f
 ### Appstore: [voice4you](https://apps.apple.com/at/app/voice4you/id6497950747)
 <br>
 
+<img src="https://github.com/benediktkrische/voice4you/assets/101208516/a3daabbc-1a07-4d74-b605-f8c7f17ccdaf" alt="Simulator Screenshot - 1" height="700"/>
+<img src="https://github.com/benediktkrische/voice4you/assets/101208516/6b9b98ed-9a5e-423f-9cdb-72c10db072e8" alt="Simulator Screenshot - 2" height="700"/>
+
 ## Features:
 * Let the app talk for you
 * Choose your topics/categories and start building your sentence
