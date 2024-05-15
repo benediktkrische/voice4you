@@ -40,8 +40,7 @@ struct ButtonView: View {
                     globals.sentence.words.removeAll { $0.uuid == word.uuid }
                 }
                 isShowingChangeAlert = false
-            }
-            
+            } 
         }
         .alert("Change the Word", isPresented: $isShowingChangeAlert) {
             TextField("new Word", text: $changingWord)

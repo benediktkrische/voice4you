@@ -12,7 +12,7 @@ import SwiftData
 struct MainView: View {
     @Environment(\.modelContext) private var modelContext
     @EnvironmentObject var globals: Globals
-    
+    @State var isShowingConfirmationAlert = false
     
     var body: some View {
         NavigationStack(path: $globals.path){
@@ -65,27 +65,23 @@ struct MainView: View {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button(action: {
                         globals.generator.impactOccurred()
-                        let confirmationAlert = UIAlertController(title: "Delete All", message: "Are you sure you want to delete all items?", preferredStyle: .alert)
-                        
-                        let confirmAction = UIAlertAction(title: "Delete", style: .destructive) { _ in
-                            // Perform delete action
-                            globals.undoSentence.append(globals.sentence)
-                            globals.sentence = Sentence(words: [])
-                        }
-                        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-                        
-                        confirmationAlert.addAction(confirmAction)
-                        confirmationAlert.addAction(cancelAction)
-                        
-                        // Present the alert
-                        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-                           let viewController = windowScene.windows.first?.rootViewController {
-                            viewController.present(confirmationAlert, animated: true, completion: nil)
-                        }
+                        isShowingConfirmationAlert = true
                     }, label: {
                         Label("Delete all", systemImage: "trash")
                     })
-                    
+                }
+            }
+            .confirmationDialog("Do you really want to delete all words?", isPresented: $isShowingConfirmationAlert, titleVisibility: .visible) {
+                Button("Delete all", role: .destructive) {
+                    globals.generator.impactOccurred()
+                    globals.undoSentence.append(globals.sentence)
+                    withAnimation(.bouncy){
+                        globals.sentence = Sentence(words: [])
+                    }
+                    isShowingConfirmationAlert = false
+                }
+                Button("Cancel", role: .cancel) {
+                    isShowingConfirmationAlert = false
                 }
             }
             //disable dark mode
@@ -106,6 +102,7 @@ struct MainView: View {
             .sheet(isPresented: $globals.isShowingSettings, content: {
                 Settings()
             })
+
             .searchable(text: $globals.searchText)
         }
     }
@@ -114,4 +111,5 @@ struct MainView: View {
 #Preview {
     MainView()
         .environmentObject(Globals())
+        .modelContainer(voice4youApp().sharedModelContainer)
 }
