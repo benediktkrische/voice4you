@@ -12,6 +12,7 @@
 		A323BA1E2BF53232006BC567 /* SettingsVoiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A323BA1D2BF53232006BC567 /* SettingsVoiceView.swift */; };
 		A323BA202BF539F4006BC567 /* Support.swift in Sources */ = {isa = PBXBuildFile; fileRef = A323BA1F2BF539F4006BC567 /* Support.swift */; };
 		A323BA222BF53F8A006BC567 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A323BA212BF53F8A006BC567 /* AboutView.swift */; };
+		A323BA252BF54BFD006BC567 /* OpenAISwift in Frameworks */ = {isa = PBXBuildFile; productRef = A323BA242BF54BFD006BC567 /* OpenAISwift */; };
 		A3255CA32BDEBBA800BD372B /* SwiftTTS in Frameworks */ = {isa = PBXBuildFile; productRef = A3255CA22BDEBBA800BD372B /* SwiftTTS */; };
 		A3925BE62BDF8EC7005CD353 /* ScrollSentence.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3925BE52BDF8EC7005CD353 /* ScrollSentence.swift */; };
 		A3925BE82BDF8EE8005CD353 /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3925BE72BDF8EE8005CD353 /* ButtonView.swift */; };
@@ -81,6 +82,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A323BA252BF54BFD006BC567 /* OpenAISwift in Frameworks */,
 				A3255CA32BDEBBA800BD372B /* SwiftTTS in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -193,6 +195,7 @@
 			name = voice4you;
 			packageProductDependencies = (
 				A3255CA22BDEBBA800BD372B /* SwiftTTS */,
+				A323BA242BF54BFD006BC567 /* OpenAISwift */,
 			);
 			productName = voice4you;
 			productReference = A3F88C872BBDDBA600867FD0 /* voice4you.app */;
@@ -224,6 +227,7 @@
 			mainGroup = A3F88C7E2BBDDBA600867FD0;
 			packageReferences = (
 				A3F88CD52BBDDDCA00867FD0 /* XCRemoteSwiftPackageReference "swift-tts" */,
+				A323BA232BF54BFD006BC567 /* XCRemoteSwiftPackageReference "OpenAISwift" */,
 			);
 			productRefGroup = A3F88C882BBDDBA600867FD0 /* Products */;
 			projectDirPath = "";
@@ -507,6 +511,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		A323BA232BF54BFD006BC567 /* XCRemoteSwiftPackageReference "OpenAISwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/adamrushy/OpenAISwift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.4.1;
+			};
+		};
 		A3F88CD52BBDDDCA00867FD0 /* XCRemoteSwiftPackageReference "swift-tts" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/renaudjenny/swift-tts";
@@ -518,6 +530,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		A323BA242BF54BFD006BC567 /* OpenAISwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A323BA232BF54BFD006BC567 /* XCRemoteSwiftPackageReference "OpenAISwift" */;
+			productName = OpenAISwift;
+		};
 		A3255CA22BDEBBA800BD372B /* SwiftTTS */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = A3F88CD52BBDDDCA00867FD0 /* XCRemoteSwiftPackageReference "swift-tts" */;
