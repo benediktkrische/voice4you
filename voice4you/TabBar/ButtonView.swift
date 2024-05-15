@@ -29,7 +29,7 @@ struct ButtonView: View {
                 .foregroundStyle(Color.primary)
         })
         .opacity(word.hidden ? 0.5 : 1)
-        .confirmationDialog("Delete Word", isPresented: $isShowingConfirmationAlert) {
+        .confirmationDialog("Your word: " + word.name, isPresented: $isShowingConfirmationAlert, titleVisibility: .visible) {
             Button("Change Word") {
                 isShowingChangeAlert = true
             }
