@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A323BA1A2BF530DE006BC567 /* SettingsVoiceRateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A323BA192BF530DE006BC567 /* SettingsVoiceRateView.swift */; };
+		A323BA1C2BF53158006BC567 /* SettingsYourVoiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A323BA1B2BF53158006BC567 /* SettingsYourVoiceView.swift */; };
+		A323BA1E2BF53232006BC567 /* SettingsVoiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A323BA1D2BF53232006BC567 /* SettingsVoiceView.swift */; };
+		A323BA202BF539F4006BC567 /* Support.swift in Sources */ = {isa = PBXBuildFile; fileRef = A323BA1F2BF539F4006BC567 /* Support.swift */; };
+		A323BA222BF53F8A006BC567 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A323BA212BF53F8A006BC567 /* AboutView.swift */; };
 		A3255CA32BDEBBA800BD372B /* SwiftTTS in Frameworks */ = {isa = PBXBuildFile; productRef = A3255CA22BDEBBA800BD372B /* SwiftTTS */; };
 		A3925BE62BDF8EC7005CD353 /* ScrollSentence.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3925BE52BDF8EC7005CD353 /* ScrollSentence.swift */; };
 		A3925BE82BDF8EE8005CD353 /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3925BE72BDF8EE8005CD353 /* ButtonView.swift */; };
@@ -36,6 +41,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A323BA192BF530DE006BC567 /* SettingsVoiceRateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVoiceRateView.swift; sourceTree = "<group>"; };
+		A323BA1B2BF53158006BC567 /* SettingsYourVoiceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsYourVoiceView.swift; sourceTree = "<group>"; };
+		A323BA1D2BF53232006BC567 /* SettingsVoiceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVoiceView.swift; sourceTree = "<group>"; };
+		A323BA1F2BF539F4006BC567 /* Support.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Support.swift; sourceTree = "<group>"; };
+		A323BA212BF53F8A006BC567 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		A3925BE52BDF8EC7005CD353 /* ScrollSentence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollSentence.swift; sourceTree = "<group>"; };
 		A3925BE72BDF8EE8005CD353 /* ButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
 		A3925BE92BDF8F6C005CD353 /* CustomWordButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomWordButton.swift; sourceTree = "<group>"; };
@@ -78,6 +88,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A323BA182BF530A2006BC567 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				A3F88CB82BBDDD3300867FD0 /* Settings.swift */,
+				A323BA212BF53F8A006BC567 /* AboutView.swift */,
+				A323BA1D2BF53232006BC567 /* SettingsVoiceView.swift */,
+				A323BA1B2BF53158006BC567 /* SettingsYourVoiceView.swift */,
+				A323BA192BF530DE006BC567 /* SettingsVoiceRateView.swift */,
+				A323BA1F2BF539F4006BC567 /* Support.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
 		A3925BEB2BDF9318005CD353 /* TabPages */ = {
 			isa = PBXGroup;
 			children = (
@@ -124,7 +147,7 @@
 				A3F88CBD2BBDDD3300867FD0 /* MainView.swift */,
 				A3925BEB2BDF9318005CD353 /* TabPages */,
 				A3925BED2BDF937F005CD353 /* TabBar */,
-				A3F88CB82BBDDD3300867FD0 /* Settings.swift */,
+				A323BA182BF530A2006BC567 /* Settings */,
 				A3F88CBE2BBDDD3300867FD0 /* FinalText.swift */,
 				A3F88CC32BBDDD3300867FD0 /* CategoryView.swift */,
 				A3F88CBB2BBDDD3300867FD0 /* CategoryList.swift */,
@@ -236,7 +259,9 @@
 				A3B4625C2BBE7B0E0067C9CF /* Word.swift in Sources */,
 				A3925BE82BDF8EE8005CD353 /* ButtonView.swift in Sources */,
 				A3925BE62BDF8EC7005CD353 /* ScrollSentence.swift in Sources */,
+				A323BA1E2BF53232006BC567 /* SettingsVoiceView.swift in Sources */,
 				A3B462602BBE7CB60067C9CF /* Globals.swift in Sources */,
+				A323BA202BF539F4006BC567 /* Support.swift in Sources */,
 				A3B4625E2BBE7B3D0067C9CF /* Category.swift in Sources */,
 				A3F88CD02BBDDD3300867FD0 /* Sentence.swift in Sources */,
 				A3F88CD22BBDDD3400867FD0 /* CategoryView.swift in Sources */,
@@ -246,10 +271,13 @@
 				A3F88CC72BBDDD3300867FD0 /* Settings.swift in Sources */,
 				A3F88CCF2BBDDD3300867FD0 /* TabPage4.swift in Sources */,
 				A3F88CD32BBDDD3400867FD0 /* TabPage3.swift in Sources */,
+				A323BA1A2BF530DE006BC567 /* SettingsVoiceRateView.swift in Sources */,
 				A3F88CC92BBDDD3300867FD0 /* TabPage0.swift in Sources */,
 				A3925BEA2BDF8F6C005CD353 /* CustomWordButton.swift in Sources */,
+				A323BA222BF53F8A006BC567 /* AboutView.swift in Sources */,
 				A3B462622BBE7CE90067C9CF /* Tab.swift in Sources */,
 				A3F88CCA2BBDDD3300867FD0 /* CategoryList.swift in Sources */,
+				A323BA1C2BF53158006BC567 /* SettingsYourVoiceView.swift in Sources */,
 				A3F88CDF2BBDDF5500867FD0 /* WordList.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

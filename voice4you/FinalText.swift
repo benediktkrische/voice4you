@@ -19,75 +19,74 @@ struct FinalText: View {
     
     private let voices = AVSpeechSynthesisVoice.speechVoices()
     var body: some View {
-        VStack{
-            NavigationStack{
-                List{
-                    VoiceSettings()
-                    Section(header: Text("your sentence")){
-                        VStack(){
-                            Text(globals.sentence.wordsAsString.joined(separator: " "))
-                                .font(.title2)
-                                .frame(maxWidth: .infinity)
-                                .multilineTextAlignment(.center)
-                                .padding()
-                                .background(.white)
-                                .cornerRadius(10)
-                        }
+        NavigationStack{
+            List{
+                SettingsVoiceView()
+                Section(header: Text("your sentence")){
+                    VStack(){
+                        Text(globals.sentence.wordsAsString.joined(separator: " "))
+                            .font(.title2)
+                            .frame(maxWidth: .infinity)
+                            .multilineTextAlignment(.center)
+                            .padding()
+                            .background(.white)
+                            .cornerRadius(10)
                     }
                 }
-                .frame(height: 500)
-                .scrollContentBackground(.hidden)
-                .background(Color("bgd"))
-                .navigationTitle("Generate Your Sentence")
-                .toolbarColorScheme(.dark, for: .navigationBar)
-                .navigationBarTitleDisplayMode(.inline)
-                .navigationBarItems(trailing: Button(action: {
-                    dismiss()
-                }, label: {
-                    Image(systemName: "xmark")
-                        .foregroundStyle(.white)
-                        .fontWeight(.bold)
-                })
-                )
-                .toolbarBackground(Color("tabBar"), for: .navigationBar)
-                .toolbarBackground(.visible, for: .navigationBar)
-                .onAppear(){
-                    text = globals.sentence.wordsAsString.joined(separator: " ")
-                }
-                VStack{
-                    Spacer()
-                    if(isProgressbarVisible){
-                        ProgressView(value: progress)
-                            .frame(height: 20)
-                            .progressViewStyle(.linear)
-                            .accentColor(Color("tabBar"))
-                            .padding(.horizontal)
-                    }
-                    Button {
-                        if(isButtonEnabled){
-                            isButtonEnabled = false
-                            speakText(text)
-                            globals.generator.impactOccurred()
-                        }
-                    } label: {
-                        Label(
-                            "Speak it!",
-                            systemImage: "text.bubble"
-                        )
-                        .frame(maxWidth: .infinity)
-                        .padding()
-                        .background(Color("tabBar"))
-                        .foregroundColor(isButtonEnabled ? .white : .gray)
-                        .cornerRadius(10)
-                        .padding(.horizontal)
-                    }
-                    .disabled(!isButtonEnabled)
-                    
-                }
-                .background(Color("bgd"))
             }
+            .frame(height: 500)
+            .scrollContentBackground(.hidden)
+            .background(Color("bgd"))
+            .navigationTitle("Generate Your Sentence")
+            .toolbarColorScheme(.dark, for: .navigationBar)
+            .navigationBarTitleDisplayMode(.inline)
+            .navigationBarItems(trailing: Button(action: {
+                dismiss()
+            }, label: {
+                Image(systemName: "xmark")
+                    .foregroundStyle(.white)
+                    .fontWeight(.bold)
+            })
+            )
+            .toolbarBackground(Color("tabBar"), for: .navigationBar)
+            .toolbarBackground(.visible, for: .navigationBar)
+            .onAppear(){
+                text = globals.sentence.wordsAsString.joined(separator: " ")
+            }
+            VStack{
+                Spacer()
+                if(isProgressbarVisible){
+                    ProgressView(value: progress)
+                        .frame(height: 20)
+                        .progressViewStyle(.linear)
+                        .accentColor(Color("tabBar"))
+                        .padding(.horizontal)
+                }
+                Button {
+                    if(isButtonEnabled){
+                        isButtonEnabled = false
+                        speakText(text)
+                        globals.generator.impactOccurred()
+                    }
+                } label: {
+                    Label(
+                        "Speak it!",
+                        systemImage: "text.bubble"
+                    )
+                    .frame(maxWidth: .infinity)
+                    .padding()
+                    .background(Color("tabBar"))
+                    .foregroundColor(isButtonEnabled ? .white : .gray)
+                    .cornerRadius(10)
+                    .padding(.horizontal)
+                }
+                .disabled(!isButtonEnabled)
+                
+            }
+            .background(Color("bgd"))
         }
     }
+    
     
     private func dismiss() {
         globals.isPresentedFinalText.toggle()
