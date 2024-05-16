@@ -16,8 +16,8 @@ struct MainView: View {
     
     var body: some View {
         NavigationStack(path: $globals.path){
-            ZStack{
-                VStack{
+            VStack{
+                ZStack{
                     TabView(selection: $globals.selectedTab,
                             content:  {
                         TabPage0()
@@ -31,12 +31,24 @@ struct MainView: View {
                         TabPage4()
                             .tag(Tab.bookmark)
                     })
-                    .tabViewStyle(.page(indexDisplayMode: .never))
-                    TabBar()
-                        .padding(.bottom)
+                    
+                    VStack{
+                        Spacer()
+                        LinearGradient(stops: [
+                            Gradient.Stop(color: .init(white: 1, opacity: 0), location: 0),
+                            Gradient.Stop(color: Color("bgd"), location: 1),
+                        ], startPoint: .top, endPoint: .bottom)
+                        .frame(height: 20)
+                    }
+                     
+                    
                 }
-                .background(Color("bgd"))
+                
+                .tabViewStyle(.page(indexDisplayMode: .never))
+                TabBar()
+                    .padding(.bottom)
             }
+            .background(Color("bgd"))
             .navigationBarTitleDisplayMode(.inline)
             .toolbarColorScheme(.dark, for: .navigationBar)
             //Items toolbar
@@ -102,7 +114,7 @@ struct MainView: View {
             .sheet(isPresented: $globals.isShowingSettings, content: {
                 Settings()
             })
-
+            
             .searchable(text: $globals.searchText)
         }
     }
