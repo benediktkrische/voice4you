@@ -59,7 +59,6 @@ struct WordList: View {
                         })
                     }
                 }
-                .searchable(text: $searchText)
             }
         }
     }

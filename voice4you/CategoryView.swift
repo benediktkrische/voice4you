@@ -19,7 +19,13 @@ struct CategoryView: View {
     var body: some View {
         ZStack{
             WordList(categoryId: category.id)
+                .toolbarColorScheme(.dark, for: .navigationBar)
+                .preferredColorScheme(.light)
+                .toolbarBackground(Color("tabBar"), for: .navigationBar)
+                .toolbarBackground(.visible, for: .navigationBar)
+                .toolbarTitleDisplayMode(.inline)
         }
+        
         .navigationTitle(category.name)
         //Color Stack
         .background(Color("bgd"))
@@ -28,7 +34,7 @@ struct CategoryView: View {
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
                 Menu{
-                    Text("in progress..")
+                    Text("feature in progress..")
                 }label: {
                     Image(systemName: "ellipsis.circle")
                 }
@@ -39,7 +45,10 @@ struct CategoryView: View {
 }
 
 #Preview {
-    CategoryView(tab: .nouns, category: Category(id: 1, tabId: 1, name: "test"))
-        .modelContainer(for: [Word.self, Category.self], inMemory: true)
+    //CategoryView(tab: .nouns, category: Category(name: "Nouns", id: 0))
+    //    .modelContainer(voice4youApp().sharedModelContainer)
+    //    .environmentObject(Globals())
+    MainView()
         .environmentObject(Globals())
+        .modelContainer(voice4youApp().sharedModelContainer)
 }
