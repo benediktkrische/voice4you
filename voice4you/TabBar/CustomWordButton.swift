@@ -30,11 +30,13 @@ struct CustomWordButton: View {
             TextField("Enter your word", text: $answerText)
             Button("Cancel", role: .cancel) {
                 isShowingAlert = false
+                answerText = ""
             }
             Button(action: {
                 globals.undoSentence.append(globals.sentence)
                 globals.sentence.words.append(SentenceWord(name: answerText, uuid: UUID()))
                 isShowingAlert = false
+                answerText = ""
             }, label: {
                 Text("Add")
             })
