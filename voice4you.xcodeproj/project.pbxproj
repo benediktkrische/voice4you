@@ -12,7 +12,6 @@
 		A323BA1E2BF53232006BC567 /* SettingsVoiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A323BA1D2BF53232006BC567 /* SettingsVoiceView.swift */; };
 		A323BA202BF539F4006BC567 /* Support.swift in Sources */ = {isa = PBXBuildFile; fileRef = A323BA1F2BF539F4006BC567 /* Support.swift */; };
 		A323BA222BF53F8A006BC567 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A323BA212BF53F8A006BC567 /* AboutView.swift */; };
-		A323BA252BF54BFD006BC567 /* OpenAISwift in Frameworks */ = {isa = PBXBuildFile; productRef = A323BA242BF54BFD006BC567 /* OpenAISwift */; };
 		A3255CA32BDEBBA800BD372B /* SwiftTTS in Frameworks */ = {isa = PBXBuildFile; productRef = A3255CA22BDEBBA800BD372B /* SwiftTTS */; };
 		A3925BE62BDF8EC7005CD353 /* ScrollSentence.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3925BE52BDF8EC7005CD353 /* ScrollSentence.swift */; };
 		A3925BE82BDF8EE8005CD353 /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3925BE72BDF8EE8005CD353 /* ButtonView.swift */; };
@@ -82,7 +81,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A323BA252BF54BFD006BC567 /* OpenAISwift in Frameworks */,
 				A3255CA32BDEBBA800BD372B /* SwiftTTS in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -195,7 +193,6 @@
 			name = voice4you;
 			packageProductDependencies = (
 				A3255CA22BDEBBA800BD372B /* SwiftTTS */,
-				A323BA242BF54BFD006BC567 /* OpenAISwift */,
 			);
 			productName = voice4you;
 			productReference = A3F88C872BBDDBA600867FD0 /* voice4you.app */;
@@ -209,7 +206,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1530;
-				LastUpgradeCheck = 1530;
+				LastUpgradeCheck = 1540;
 				TargetAttributes = {
 					A3F88C862BBDDBA600867FD0 = {
 						CreatedOnToolsVersion = 15.3;
@@ -227,7 +224,6 @@
 			mainGroup = A3F88C7E2BBDDBA600867FD0;
 			packageReferences = (
 				A3F88CD52BBDDDCA00867FD0 /* XCRemoteSwiftPackageReference "swift-tts" */,
-				A323BA232BF54BFD006BC567 /* XCRemoteSwiftPackageReference "OpenAISwift" */,
 			);
 			productRefGroup = A3F88C882BBDDBA600867FD0 /* Products */;
 			projectDirPath = "";
@@ -323,6 +319,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -384,6 +381,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -411,6 +409,7 @@
 				CODE_SIGN_ENTITLEMENTS = voice4you/voice4you.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"voice4you/Preview Content\"";
 				DEVELOPMENT_TEAM = 99Q76NH34C;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -433,7 +432,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				MARKETING_VERSION = 1.3;
+				MARKETING_VERSION = 1.4;
 				PRODUCT_BUNDLE_IDENTIFIER = at.htlklu.voice4you;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
@@ -453,6 +452,7 @@
 				CODE_SIGN_ENTITLEMENTS = voice4you/voice4you.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"voice4you/Preview Content\"";
 				DEVELOPMENT_TEAM = 99Q76NH34C;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -475,7 +475,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				MARKETING_VERSION = 1.3;
+				MARKETING_VERSION = 1.4;
 				PRODUCT_BUNDLE_IDENTIFIER = at.htlklu.voice4you;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
@@ -511,14 +511,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		A323BA232BF54BFD006BC567 /* XCRemoteSwiftPackageReference "OpenAISwift" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/adamrushy/OpenAISwift";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.4.1;
-			};
-		};
 		A3F88CD52BBDDDCA00867FD0 /* XCRemoteSwiftPackageReference "swift-tts" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/renaudjenny/swift-tts";
@@ -530,11 +522,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		A323BA242BF54BFD006BC567 /* OpenAISwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = A323BA232BF54BFD006BC567 /* XCRemoteSwiftPackageReference "OpenAISwift" */;
-			productName = OpenAISwift;
-		};
 		A3255CA22BDEBBA800BD372B /* SwiftTTS */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = A3F88CD52BBDDDCA00867FD0 /* XCRemoteSwiftPackageReference "swift-tts" */;
