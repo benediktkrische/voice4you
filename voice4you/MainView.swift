@@ -71,7 +71,6 @@ struct MainView: View {
                         }
                     }, label: {
                         Label("Undo", systemImage: "arrow.uturn.backward")
-                            .font(.caption)
                     })
                     .disabled(globals.undoSentence == [])
                 }

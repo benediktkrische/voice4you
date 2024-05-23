@@ -105,4 +105,18 @@ class Globals: ObservableObject {
         }
         _ = try await task.value
     }
+    
+    func reset() {
+        Task() {
+            let fileURL = try Self.fileURL()
+            do {
+                print("deleting file at \(fileURL)")
+                try FileManager.default.removeItem(at: fileURL)
+                try await load()
+            }catch {
+                print("Error: \(error)")
+            }
+            
+        }
+    }
 }
