@@ -35,6 +35,17 @@ struct SettingsVoiceRateView: View {
         }
         .clipShape(RoundedRectangle(cornerRadius: showText ? 10 : 0))
         .padding(.horizontal, showText ? 20 : 0)
+        .onChange(of: isEditing) {
+            if(!isEditing){
+                Task() {
+                    do {
+                        try await globals.save()
+                    } catch {
+                        fatalError(error.localizedDescription)
+                    }
+                }
+            }
+        }
             
         if(showText){
             Text("Here you can change the speed of your voice. Try different speeds, to find which suits you best")
@@ -46,6 +57,6 @@ struct SettingsVoiceRateView: View {
 }
 
 #Preview {
-    FinalText()
+    MainView(saveAction: {})
         .environmentObject(Globals())
 }

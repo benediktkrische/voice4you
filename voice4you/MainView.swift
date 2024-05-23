@@ -11,8 +11,10 @@ import SwiftData
 @available(iOS 17.0, *)
 struct MainView: View {
     @Environment(\.modelContext) private var modelContext
+    @Environment(\.scenePhase) private var scenePhase
     @EnvironmentObject var globals: Globals
     @State var isShowingConfirmationAlert = false
+    let saveAction: () -> Void
     
     var body: some View {
         NavigationStack(path: $globals.path){
@@ -69,7 +71,6 @@ struct MainView: View {
                         }
                     }, label: {
                         Label("Undo", systemImage: "arrow.uturn.backward")
-                            .font(.caption)
                     })
                     .disabled(globals.undoSentence == [])
                 }
@@ -112,16 +113,20 @@ struct MainView: View {
                 FinalText()
             }
             .sheet(isPresented: $globals.isShowingSettings, content: {
-                Settings()
+                SettingsView()
             })
-            
+            .onChange(of: scenePhase) {_, newPhase in
+                if newPhase == .inactive || newPhase == .background {
+                    saveAction()
+                }
+            }
             .searchable(text: $globals.searchText)
         }
     }
 }
 
 #Preview {
-    MainView()
+    MainView(saveAction: {})
         .environmentObject(Globals())
         .modelContainer(voice4youApp().sharedModelContainer)
 }

@@ -11,10 +11,12 @@ struct CustomWordButton: View {
     @EnvironmentObject var globals: Globals
     @State private var isShowingAlert = false
     @State private var answerText = ""
+    @Binding var iSCD: Bool
     
     var body: some View {
         Button(action: {
             globals.generator.impactOccurred()
+            iSCD = false
             isShowingAlert = true
         }, label: {
             Image(systemName: "keyboard")
@@ -46,6 +48,6 @@ struct CustomWordButton: View {
 }
 
 #Preview {
-    CustomWordButton()
+    CustomWordButton(iSCD: .constant(false))
         .environmentObject(Globals())
 }

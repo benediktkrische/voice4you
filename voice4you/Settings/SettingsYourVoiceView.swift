@@ -29,6 +29,15 @@ struct SettingsYourVoiceView: View {
         }
         .clipShape(showText ? RoundedRectangle(cornerRadius: 10) : RoundedRectangle(cornerRadius: 0))
         .padding(.horizontal, showText ? 20 : 0)
+        .onChange(of: globals.selectedVoice) {
+            Task() {
+                do {
+                    try await globals.save()
+                } catch {
+                    fatalError(error.localizedDescription)
+                }
+            }
+        }
         
         if(showText){
             Text("Here you can change your voice. Try them out, to find which suits you best.")

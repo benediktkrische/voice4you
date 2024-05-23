@@ -13,14 +13,15 @@ struct ScrollSentence: View {
     @State var changingWord = ""
     @State var index: Int? = 0
     @State var beforeDragging: Sentence?
+    @State var iSCD = false
     
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false){
             LazyHGrid(rows: [GridItem(.fixed(20))], content: {
                 ForEach(globals.sentence.words, id:\.uuid){ word in
-                    ButtonView(word: word)
+                    ButtonView(word: word, iSCD: $iSCD)
                         .draggable(word){
-                            ButtonView(word: word)
+                            ButtonView(word: word, iSCD: $iSCD)
                                 .onAppear(perform: {
                                     globals.draggingItem = word
                                     beforeDragging = globals.sentence
@@ -50,7 +51,7 @@ struct ScrollSentence: View {
                         }
                         )
                 }
-                CustomWordButton()
+                CustomWordButton(iSCD: $iSCD)
             }
             )
             .frame(width: nil, height: 30)

@@ -13,7 +13,7 @@ import SwiftData
 import UIKit
 import UniformTypeIdentifiers
 
-struct Sentence: Hashable{
+struct Sentence: Hashable, Codable{
     var words: [SentenceWord]
     
     init(words: [String]) {

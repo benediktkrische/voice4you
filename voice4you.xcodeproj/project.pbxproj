@@ -12,7 +12,7 @@
 		A323BA1E2BF53232006BC567 /* SettingsVoiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A323BA1D2BF53232006BC567 /* SettingsVoiceView.swift */; };
 		A323BA202BF539F4006BC567 /* Support.swift in Sources */ = {isa = PBXBuildFile; fileRef = A323BA1F2BF539F4006BC567 /* Support.swift */; };
 		A323BA222BF53F8A006BC567 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A323BA212BF53F8A006BC567 /* AboutView.swift */; };
-		A3255CA32BDEBBA800BD372B /* SwiftTTS in Frameworks */ = {isa = PBXBuildFile; productRef = A3255CA22BDEBBA800BD372B /* SwiftTTS */; };
+		A32B06A52BFF838300351FB7 /* SwiftTTS in Frameworks */ = {isa = PBXBuildFile; productRef = A32B06A42BFF838300351FB7 /* SwiftTTS */; };
 		A3925BE62BDF8EC7005CD353 /* ScrollSentence.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3925BE52BDF8EC7005CD353 /* ScrollSentence.swift */; };
 		A3925BE82BDF8EE8005CD353 /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3925BE72BDF8EE8005CD353 /* ButtonView.swift */; };
 		A3925BEA2BDF8F6C005CD353 /* CustomWordButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3925BE92BDF8F6C005CD353 /* CustomWordButton.swift */; };
@@ -24,7 +24,7 @@
 		A3F88C8B2BBDDBA600867FD0 /* voice4youApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F88C8A2BBDDBA600867FD0 /* voice4youApp.swift */; };
 		A3F88C912BBDDBA700867FD0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A3F88C902BBDDBA700867FD0 /* Assets.xcassets */; };
 		A3F88C952BBDDBA700867FD0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A3F88C942BBDDBA700867FD0 /* Preview Assets.xcassets */; };
-		A3F88CC72BBDDD3300867FD0 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F88CB82BBDDD3300867FD0 /* Settings.swift */; };
+		A3F88CC72BBDDD3300867FD0 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F88CB82BBDDD3300867FD0 /* SettingsView.swift */; };
 		A3F88CC82BBDDD3300867FD0 /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F88CB92BBDDD3300867FD0 /* TabBar.swift */; };
 		A3F88CC92BBDDD3300867FD0 /* TabPage0.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F88CBA2BBDDD3300867FD0 /* TabPage0.swift */; };
 		A3F88CCA2BBDDD3300867FD0 /* CategoryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F88CBB2BBDDD3300867FD0 /* CategoryList.swift */; };
@@ -60,7 +60,7 @@
 		A3F88C902BBDDBA700867FD0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A3F88C922BBDDBA700867FD0 /* voice4you.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = voice4you.entitlements; sourceTree = "<group>"; };
 		A3F88C942BBDDBA700867FD0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		A3F88CB82BBDDD3300867FD0 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		A3F88CB82BBDDD3300867FD0 /* SettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		A3F88CB92BBDDD3300867FD0 /* TabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
 		A3F88CBA2BBDDD3300867FD0 /* TabPage0.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabPage0.swift; sourceTree = "<group>"; };
 		A3F88CBB2BBDDD3300867FD0 /* CategoryList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryList.swift; sourceTree = "<group>"; };
@@ -81,7 +81,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A3255CA32BDEBBA800BD372B /* SwiftTTS in Frameworks */,
+				A32B06A52BFF838300351FB7 /* SwiftTTS in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -91,7 +91,7 @@
 		A323BA182BF530A2006BC567 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				A3F88CB82BBDDD3300867FD0 /* Settings.swift */,
+				A3F88CB82BBDDD3300867FD0 /* SettingsView.swift */,
 				A323BA212BF53F8A006BC567 /* AboutView.swift */,
 				A323BA1D2BF53232006BC567 /* SettingsVoiceView.swift */,
 				A323BA1B2BF53158006BC567 /* SettingsYourVoiceView.swift */,
@@ -192,7 +192,7 @@
 			);
 			name = voice4you;
 			packageProductDependencies = (
-				A3255CA22BDEBBA800BD372B /* SwiftTTS */,
+				A32B06A42BFF838300351FB7 /* SwiftTTS */,
 			);
 			productName = voice4you;
 			productReference = A3F88C872BBDDBA600867FD0 /* voice4you.app */;
@@ -223,7 +223,7 @@
 			);
 			mainGroup = A3F88C7E2BBDDBA600867FD0;
 			packageReferences = (
-				A3F88CD52BBDDDCA00867FD0 /* XCRemoteSwiftPackageReference "swift-tts" */,
+				A32B06A32BFF838300351FB7 /* XCRemoteSwiftPackageReference "swift-tts" */,
 			);
 			productRefGroup = A3F88C882BBDDBA600867FD0 /* Products */;
 			projectDirPath = "";
@@ -268,7 +268,7 @@
 				A3F88CC82BBDDD3300867FD0 /* TabBar.swift in Sources */,
 				A3F88CCD2BBDDD3300867FD0 /* FinalText.swift in Sources */,
 				A3F88C8B2BBDDBA600867FD0 /* voice4youApp.swift in Sources */,
-				A3F88CC72BBDDD3300867FD0 /* Settings.swift in Sources */,
+				A3F88CC72BBDDD3300867FD0 /* SettingsView.swift in Sources */,
 				A3F88CCF2BBDDD3300867FD0 /* TabPage4.swift in Sources */,
 				A3F88CD32BBDDD3400867FD0 /* TabPage3.swift in Sources */,
 				A323BA1A2BF530DE006BC567 /* SettingsVoiceRateView.swift in Sources */,
@@ -511,7 +511,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		A3F88CD52BBDDDCA00867FD0 /* XCRemoteSwiftPackageReference "swift-tts" */ = {
+		A32B06A32BFF838300351FB7 /* XCRemoteSwiftPackageReference "swift-tts" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/renaudjenny/swift-tts";
 			requirement = {
@@ -522,9 +522,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		A3255CA22BDEBBA800BD372B /* SwiftTTS */ = {
+		A32B06A42BFF838300351FB7 /* SwiftTTS */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = A3F88CD52BBDDDCA00867FD0 /* XCRemoteSwiftPackageReference "swift-tts" */;
+			package = A32B06A32BFF838300351FB7 /* XCRemoteSwiftPackageReference "swift-tts" */;
 			productName = SwiftTTS;
 		};
 /* End XCSwiftPackageProductDependency section */
