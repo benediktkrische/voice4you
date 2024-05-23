@@ -12,12 +12,14 @@ struct ButtonView: View {
     @State var word: SentenceWord
     @State var changingWord = ""
     @State var isShowingChangeAlert = false
-    @State var isShowingConfirmationAlert = false
+    @State var isShowingConfirmationDialog: Bool = false
+    @Binding var iSCD: Bool
     
     var body: some View {
         Button(action: {
             changingWord = word.name
-            isShowingConfirmationAlert = true
+            iSCD = true
+            isShowingConfirmationDialog = true
         }, label: {
             Text(word.name)
                 .padding(.horizontal, 10)
@@ -29,7 +31,7 @@ struct ButtonView: View {
                 .foregroundStyle(Color.primary)
         })
         .opacity(word.hidden ? 0.5 : 1)
-        .confirmationDialog("Your word: " + word.name, isPresented: $isShowingConfirmationAlert, titleVisibility: .visible) {
+        .confirmationDialog("Your word: " + word.name, isPresented: $isShowingConfirmationDialog, titleVisibility: .visible) {
             Button("Change Word") {
                 isShowingChangeAlert = true
             }
@@ -67,11 +69,15 @@ struct ButtonView: View {
                 Text("Safe")
             })
         }
- 
+        .onChange(of: iSCD) {_, value in
+            if value == false{
+                isShowingConfirmationDialog = false
+            }
+        }
     }
 }
 
 #Preview {
-    ButtonView(word: SentenceWord(name: "Test", uuid: UUID()))
+    ButtonView(word: SentenceWord(name: "Test", uuid: UUID()), iSCD: .constant(false))
         .environmentObject(Globals())
 }
