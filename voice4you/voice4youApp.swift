@@ -10,6 +10,8 @@ import SwiftData
 
 @main
 struct voice4youApp: App {
+    @StateObject private var globals = Globals()
+    
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([Category.self, Word.self])
         do {
@@ -33,8 +35,23 @@ struct voice4youApp: App {
     
     var body: some Scene {
         WindowGroup {
-            MainView()
-                .environmentObject(Globals())
+            MainView() {
+                Task() {
+                    do {
+                        try await globals.save()
+                    } catch {
+                        fatalError(error.localizedDescription)
+                    }
+                }
+            }
+            .environmentObject(globals)
+            .task {
+                do {
+                    try await globals.load()
+                } catch {
+                    fatalError(error.localizedDescription)
+                }
+            }
         }
         .modelContainer(sharedModelContainer)
     }

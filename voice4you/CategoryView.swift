@@ -48,7 +48,7 @@ struct CategoryView: View {
     //CategoryView(tab: .nouns, category: Category(name: "Nouns", id: 0))
     //    .modelContainer(voice4youApp().sharedModelContainer)
     //    .environmentObject(Globals())
-    MainView()
+    MainView(saveAction: {})
         .environmentObject(Globals())
         .modelContainer(voice4youApp().sharedModelContainer)
 }
