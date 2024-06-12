@@ -99,4 +99,4 @@ Thumbs.db
 #tests
 voice4youTests/
 voice4youUITests/
-Secrets.xcconfig
+Secrets.swift

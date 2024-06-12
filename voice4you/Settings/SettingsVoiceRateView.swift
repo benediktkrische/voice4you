@@ -19,14 +19,14 @@ struct SettingsVoiceRateView: View {
                 HStack{
                     Image(systemName: "tortoise.fill")
                         .foregroundStyle(Color("tabBar"))
-                    Slider(value: $globals.rate, in: 0.5...1.5, step: 0.1, onEditingChanged: { editing in
+                    Slider(value: $globals.voiceRate, in: 0.3...1.8, step: 0.1, onEditingChanged: { editing in
                         isEditing = editing
                     })
                     .accentColor(Color("tabBar"))
                     Image(systemName: "hare.fill")
                         .foregroundStyle(Color("tabBar"))
                 }
-                Text("\(globals.rate.magnitude, specifier: "%.1f")")
+                Text("\(globals.voiceRate.magnitude, specifier: "%.1f")")
                     .foregroundColor(Color("tabBar"))
                     .font(.title2)
             }

@@ -12,7 +12,10 @@
 		A323BA1E2BF53232006BC567 /* SettingsVoiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A323BA1D2BF53232006BC567 /* SettingsVoiceView.swift */; };
 		A323BA202BF539F4006BC567 /* Support.swift in Sources */ = {isa = PBXBuildFile; fileRef = A323BA1F2BF539F4006BC567 /* Support.swift */; };
 		A323BA222BF53F8A006BC567 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A323BA212BF53F8A006BC567 /* AboutView.swift */; };
-		A32B06A52BFF838300351FB7 /* SwiftTTS in Frameworks */ = {isa = PBXBuildFile; productRef = A32B06A42BFF838300351FB7 /* SwiftTTS */; };
+		A32B06AA2BFFADCB00351FB7 /* SwiftTTS in Frameworks */ = {isa = PBXBuildFile; productRef = A32B06A92BFFADCB00351FB7 /* SwiftTTS */; };
+		A32B06AC2BFFC20800351FB7 /* APICaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = A32B06AB2BFFC20800351FB7 /* APICaller.swift */; };
+		A32B06AF2BFFC27500351FB7 /* OpenAI in Frameworks */ = {isa = PBXBuildFile; productRef = A32B06AE2BFFC27500351FB7 /* OpenAI */; };
+		A36234A52C04A72B0077D9D1 /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36234A42C04A72B0077D9D1 /* Secrets.swift */; };
 		A3925BE62BDF8EC7005CD353 /* ScrollSentence.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3925BE52BDF8EC7005CD353 /* ScrollSentence.swift */; };
 		A3925BE82BDF8EE8005CD353 /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3925BE72BDF8EE8005CD353 /* ButtonView.swift */; };
 		A3925BEA2BDF8F6C005CD353 /* CustomWordButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3925BE92BDF8F6C005CD353 /* CustomWordButton.swift */; };
@@ -37,6 +40,8 @@
 		A3F88CD32BBDDD3400867FD0 /* TabPage3.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F88CC42BBDDD3300867FD0 /* TabPage3.swift */; };
 		A3F88CD42BBDDD3400867FD0 /* TabPage1.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F88CC52BBDDD3300867FD0 /* TabPage1.swift */; };
 		A3F88CDF2BBDDF5500867FD0 /* WordList.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F88CDE2BBDDF5500867FD0 /* WordList.swift */; };
+		A3FA32AD2C02491B002CC944 /* AISection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3FA32AC2C02491B002CC944 /* AISection.swift */; };
+		A3FA32AF2C0289EE002CC944 /* SettingsAIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3FA32AE2C0289EE002CC944 /* SettingsAIView.swift */; };
 		A3FA5EBA2BD56F5900F4E624 /* voice4youData.store in Resources */ = {isa = PBXBuildFile; fileRef = A3FA5EB92BD56F5900F4E624 /* voice4youData.store */; };
 /* End PBXBuildFile section */
 
@@ -46,6 +51,8 @@
 		A323BA1D2BF53232006BC567 /* SettingsVoiceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVoiceView.swift; sourceTree = "<group>"; };
 		A323BA1F2BF539F4006BC567 /* Support.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Support.swift; sourceTree = "<group>"; };
 		A323BA212BF53F8A006BC567 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
+		A32B06AB2BFFC20800351FB7 /* APICaller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APICaller.swift; sourceTree = "<group>"; };
+		A36234A42C04A72B0077D9D1 /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
 		A3925BE52BDF8EC7005CD353 /* ScrollSentence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollSentence.swift; sourceTree = "<group>"; };
 		A3925BE72BDF8EE8005CD353 /* ButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
 		A3925BE92BDF8F6C005CD353 /* CustomWordButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomWordButton.swift; sourceTree = "<group>"; };
@@ -73,6 +80,8 @@
 		A3F88CC42BBDDD3300867FD0 /* TabPage3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabPage3.swift; sourceTree = "<group>"; };
 		A3F88CC52BBDDD3300867FD0 /* TabPage1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabPage1.swift; sourceTree = "<group>"; };
 		A3F88CDE2BBDDF5500867FD0 /* WordList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordList.swift; sourceTree = "<group>"; };
+		A3FA32AC2C02491B002CC944 /* AISection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AISection.swift; sourceTree = "<group>"; };
+		A3FA32AE2C0289EE002CC944 /* SettingsAIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsAIView.swift; sourceTree = "<group>"; };
 		A3FA5EB92BD56F5900F4E624 /* voice4youData.store */ = {isa = PBXFileReference; lastKnownFileType = file; path = voice4youData.store; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -81,7 +90,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A32B06A52BFF838300351FB7 /* SwiftTTS in Frameworks */,
+				A32B06AF2BFFC27500351FB7 /* OpenAI in Frameworks */,
+				A32B06AA2BFFADCB00351FB7 /* SwiftTTS in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -92,6 +102,7 @@
 			isa = PBXGroup;
 			children = (
 				A3F88CB82BBDDD3300867FD0 /* SettingsView.swift */,
+				A3FA32AE2C0289EE002CC944 /* SettingsAIView.swift */,
 				A323BA212BF53F8A006BC567 /* AboutView.swift */,
 				A323BA1D2BF53232006BC567 /* SettingsVoiceView.swift */,
 				A323BA1B2BF53158006BC567 /* SettingsYourVoiceView.swift */,
@@ -99,6 +110,14 @@
 				A323BA1F2BF539F4006BC567 /* Support.swift */,
 			);
 			path = Settings;
+			sourceTree = "<group>";
+		};
+		A36234A02C03DEEF0077D9D1 /* Secrets */ = {
+			isa = PBXGroup;
+			children = (
+				A36234A42C04A72B0077D9D1 /* Secrets.swift */,
+			);
+			path = Secrets;
 			sourceTree = "<group>";
 		};
 		A3925BEB2BDF9318005CD353 /* TabPages */ = {
@@ -149,11 +168,14 @@
 				A3925BED2BDF937F005CD353 /* TabBar */,
 				A323BA182BF530A2006BC567 /* Settings */,
 				A3F88CBE2BBDDD3300867FD0 /* FinalText.swift */,
+				A3FA32AC2C02491B002CC944 /* AISection.swift */,
 				A3F88CC32BBDDD3300867FD0 /* CategoryView.swift */,
 				A3F88CBB2BBDDD3300867FD0 /* CategoryList.swift */,
 				A3F88CDE2BBDDF5500867FD0 /* WordList.swift */,
 				A3B462632BBE7D530067C9CF /* CustomStyles.swift */,
+				A36234A02C03DEEF0077D9D1 /* Secrets */,
 				A3F88CC12BBDDD3300867FD0 /* Sentence.swift */,
+				A32B06AB2BFFC20800351FB7 /* APICaller.swift */,
 				A3B4625F2BBE7CB60067C9CF /* Globals.swift */,
 				A3B462612BBE7CE90067C9CF /* Tab.swift */,
 				A3B4625B2BBE7B0E0067C9CF /* Word.swift */,
@@ -192,7 +214,8 @@
 			);
 			name = voice4you;
 			packageProductDependencies = (
-				A32B06A42BFF838300351FB7 /* SwiftTTS */,
+				A32B06A92BFFADCB00351FB7 /* SwiftTTS */,
+				A32B06AE2BFFC27500351FB7 /* OpenAI */,
 			);
 			productName = voice4you;
 			productReference = A3F88C872BBDDBA600867FD0 /* voice4you.app */;
@@ -223,7 +246,8 @@
 			);
 			mainGroup = A3F88C7E2BBDDBA600867FD0;
 			packageReferences = (
-				A32B06A32BFF838300351FB7 /* XCRemoteSwiftPackageReference "swift-tts" */,
+				A32B06A82BFFADCB00351FB7 /* XCRemoteSwiftPackageReference "swift-tts" */,
+				A32B06AD2BFFC27500351FB7 /* XCRemoteSwiftPackageReference "OpenAI" */,
 			);
 			productRefGroup = A3F88C882BBDDBA600867FD0 /* Products */;
 			projectDirPath = "";
@@ -255,6 +279,7 @@
 				A3B462642BBE7D530067C9CF /* CustomStyles.swift in Sources */,
 				A3F88CD42BBDDD3400867FD0 /* TabPage1.swift in Sources */,
 				A3F88CCB2BBDDD3300867FD0 /* TabPage2.swift in Sources */,
+				A32B06AC2BFFC20800351FB7 /* APICaller.swift in Sources */,
 				A3F88CCC2BBDDD3300867FD0 /* MainView.swift in Sources */,
 				A3B4625C2BBE7B0E0067C9CF /* Word.swift in Sources */,
 				A3925BE82BDF8EE8005CD353 /* ButtonView.swift in Sources */,
@@ -265,10 +290,13 @@
 				A3B4625E2BBE7B3D0067C9CF /* Category.swift in Sources */,
 				A3F88CD02BBDDD3300867FD0 /* Sentence.swift in Sources */,
 				A3F88CD22BBDDD3400867FD0 /* CategoryView.swift in Sources */,
+				A36234A52C04A72B0077D9D1 /* Secrets.swift in Sources */,
 				A3F88CC82BBDDD3300867FD0 /* TabBar.swift in Sources */,
 				A3F88CCD2BBDDD3300867FD0 /* FinalText.swift in Sources */,
 				A3F88C8B2BBDDBA600867FD0 /* voice4youApp.swift in Sources */,
+				A3FA32AF2C0289EE002CC944 /* SettingsAIView.swift in Sources */,
 				A3F88CC72BBDDD3300867FD0 /* SettingsView.swift in Sources */,
+				A3FA32AD2C02491B002CC944 /* AISection.swift in Sources */,
 				A3F88CCF2BBDDD3300867FD0 /* TabPage4.swift in Sources */,
 				A3F88CD32BBDDD3400867FD0 /* TabPage3.swift in Sources */,
 				A323BA1A2BF530DE006BC567 /* SettingsVoiceRateView.swift in Sources */,
@@ -432,7 +460,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				MARKETING_VERSION = 1.4;
+				MARKETING_VERSION = 1.6;
 				PRODUCT_BUNDLE_IDENTIFIER = at.htlklu.voice4you;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
@@ -475,7 +503,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				MARKETING_VERSION = 1.4;
+				MARKETING_VERSION = 1.6;
 				PRODUCT_BUNDLE_IDENTIFIER = at.htlklu.voice4you;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
@@ -511,7 +539,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		A32B06A32BFF838300351FB7 /* XCRemoteSwiftPackageReference "swift-tts" */ = {
+		A32B06A82BFFADCB00351FB7 /* XCRemoteSwiftPackageReference "swift-tts" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/renaudjenny/swift-tts";
 			requirement = {
@@ -519,13 +547,26 @@
 				minimumVersion = 2.1.2;
 			};
 		};
+		A32B06AD2BFFC27500351FB7 /* XCRemoteSwiftPackageReference "OpenAI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/MacPaw/OpenAI.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.2.9;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		A32B06A42BFF838300351FB7 /* SwiftTTS */ = {
+		A32B06A92BFFADCB00351FB7 /* SwiftTTS */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = A32B06A32BFF838300351FB7 /* XCRemoteSwiftPackageReference "swift-tts" */;
+			package = A32B06A82BFFADCB00351FB7 /* XCRemoteSwiftPackageReference "swift-tts" */;
 			productName = SwiftTTS;
+		};
+		A32B06AE2BFFC27500351FB7 /* OpenAI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A32B06AD2BFFC27500351FB7 /* XCRemoteSwiftPackageReference "OpenAI" */;
+			productName = OpenAI;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

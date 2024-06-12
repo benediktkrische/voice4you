@@ -5,12 +5,7 @@
 //  Created by Benedikt Krische on 06.12.23.
 //
 
-import Foundation
-import AVFoundation
-import SwiftTTS
 import SwiftUI
-import SwiftData
-import UIKit
 import UniformTypeIdentifiers
 
 struct Sentence: Hashable, Codable{
