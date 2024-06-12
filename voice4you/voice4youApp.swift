@@ -36,13 +36,7 @@ struct voice4youApp: App {
     var body: some Scene {
         WindowGroup {
             MainView() {
-                Task() {
-                    do {
-                        try await globals.save()
-                    } catch {
-                        fatalError(error.localizedDescription)
-                    }
-                }
+                saveChangings()
             }
             .environmentObject(globals)
             .task {
@@ -52,7 +46,44 @@ struct voice4youApp: App {
                     fatalError(error.localizedDescription)
                 }
             }
+            .onChange(of: globals.sentence) {
+                saveChangings()
+            }
+            .onChange(of: globals.voiceRate){
+                saveChangings()
+            }
+            .onChange(of: globals.openAIAPIKey){
+                saveChangings()
+            }
+            .onChange(of: globals.openAIFreeRequests){
+                saveChangings()
+            }
+            .onChange(of: globals.selectedVoice){
+                saveChangings()
+            }
+            .onChange(of: globals.openAIChatResults){
+                saveChangings()
+            }
+            .onChange(of: globals.dateOfFirstAppStart){
+                saveChangings()
+            }
+            .onChange(of: globals.isFirstAppStart){
+                saveChangings()
+            }
+            .onChange(of: globals.isAIEnabled){
+                saveChangings()
+            }
         }
         .modelContainer(sharedModelContainer)
+    }
+    
+    func saveChangings(){
+        Task() {
+            do {
+                try await globals.save()
+            } catch {
+                fatalError(error.localizedDescription)
+            }
+        }
     }
 }

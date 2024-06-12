@@ -112,7 +112,7 @@ struct MainView: View {
             .fullScreenCover(isPresented: $globals.isPresentedFinalText) {
                 FinalText()
             }
-            .sheet(isPresented: $globals.isShowingSettings, content: {
+            .fullScreenCover(isPresented: $globals.isShowingSettings, content: {
                 SettingsView()
             })
             .onChange(of: scenePhase) {_, newPhase in

@@ -50,7 +50,7 @@ struct SettingsVoiceView: View {
                     Label("Voice Speed", systemImage: "speedometer")
                         .foregroundStyle(.primary)
                     Spacer()
-                    Text(String(round(globals.rate*10)/10))
+                    Text(String(round(globals.voiceRate*10)/10))
                         .foregroundStyle(Color(UIColor(.secondary)))
                 }
             })
