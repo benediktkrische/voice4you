@@ -42,8 +42,6 @@ struct MainView: View {
                         ], startPoint: .top, endPoint: .bottom)
                         .frame(height: 20)
                     }
-                     
-                    
                 }
                 
                 .tabViewStyle(.page(indexDisplayMode: .never))

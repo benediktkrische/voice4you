@@ -12,14 +12,35 @@ struct SettingsView: View {
     @EnvironmentObject var globals: Globals
     @State var isAlertShown = false
     var body: some View {
-        NavigationStack{
+        NavigationStack (path: $globals.settingsPath){
             List{
-                Section(header: Text("select your voice")){
+                Section {
                     SettingsYourVoiceView()
+                } header: {
+                    Text("select your voice")
+                } footer: {
+                    Text("Try different voices, to find which suits you best.")
                 }
-                Section(header: Text("select Your rate")){
+                Section {
                     SettingsVoiceRateView()
+                } header: {
+                    Text("select Your rate")
+                } footer: {
+                    Text("Try different speeds, to find which suits you best.")
                 }
+                Section(header: Text("AI Settings")){
+                    NavigationLink(destination: {
+                        SettingsAIView()
+                    }, label: {
+                        Label {
+                            Text("AI Settings")
+                        } icon: {
+                            Image(systemName: "sparkles")
+                        }
+                        .foregroundStyle(globals.isAISettingsViewHighlighted ? .blue : .primary)
+                    })
+                }
+                
                 Section(header: Text("About")){
                     NavigationLink(destination: {
                         Support()
@@ -67,7 +88,6 @@ struct SettingsView: View {
             .toolbarBackground(Color("tabBar"), for: .navigationBar)
             .toolbarBackground(.visible, for: .navigationBar)
         }
-        .navigationViewStyle(.columns)
         .accentColor(Color("tabBar"))
         .alert("Are you sure you want to reset the app?", isPresented: $isAlertShown) {
             Button("Cancel", role: .cancel){
@@ -84,6 +104,7 @@ struct SettingsView: View {
     func dismiss() {
         globals.isShowingSettings.toggle()
     }
+
 }
 
 #Preview {

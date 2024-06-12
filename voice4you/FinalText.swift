@@ -12,29 +12,73 @@ import CoreAudioTypes
 
 struct FinalText: View {
     @EnvironmentObject var globals: Globals
-    @State var text: String = ""
     @State var progress: Double = 0
     @State var isButtonEnabled = true
     @State var isProgressbarVisible = false
+    @State var isAIselected = true
+    @State var apiAnswer = ""
     
     private let voices = AVSpeechSynthesisVoice.speechVoices()
     var body: some View {
         NavigationStack{
-            List{
-                SettingsVoiceView()
-                Section(header: Text("your sentence")){
-                    VStack(){
+            VStack{
+                List{
+                    SettingsVoiceView()
+                    Section(header: Text("your sentence")){
                         Text(globals.sentence.wordsAsString.joined(separator: " "))
                             .font(.title2)
                             .frame(maxWidth: .infinity)
                             .multilineTextAlignment(.center)
                             .padding()
-                            .background(.white)
-                            .cornerRadius(10)
+                            .bold(!isAIselected)
+                            .foregroundStyle(isAIselected ? .black : Color("tabBar"))
+                            .onTapGesture {
+                                if(apiAnswer != ""){
+                                    globals.generator.impactOccurred()
+                                    isAIselected = false
+                                }
+                            }
+                    }
+                    if (globals.isAIEnabled){
+                        AISection(isAIselected: $isAIselected, apiAnswer: $apiAnswer)
                     }
                 }
+                VStack{
+                    if(isProgressbarVisible){
+                        ProgressView(value: progress)
+                            .frame(height: 20)
+                            .progressViewStyle(.linear)
+                            .accentColor(Color("tabBar"))
+                            .padding(.horizontal)
+                    }
+                    Button {
+                        if(isButtonEnabled){
+                            isButtonEnabled = false
+                            if(apiAnswer == "" || !isAIselected){
+                                speakText(globals.sentence.wordsAsString.joined(separator: " "))
+                            }else{
+                                speakText(apiAnswer)
+                            }
+                            globals.generator.impactOccurred()
+                        }
+                    } label: {
+                        Label(
+                            "Speak it!",
+                            systemImage: "text.bubble"
+                        )
+                        .frame(maxWidth: .infinity)
+                        .padding()
+                        .background(Color("tabBar"))
+                        .foregroundColor(isButtonEnabled ? .white : .gray)
+                        .cornerRadius(10)
+                        .padding(.horizontal)
+                    }
+                    .disabled(!isButtonEnabled)
+                }
+                .padding(.horizontal)
+                
             }
-            .frame(height: 500)
+            .scrollDisabled(true)
             .scrollContentBackground(.hidden)
             .background(Color("bgd"))
             .navigationTitle("Generate Your Sentence")
@@ -50,43 +94,12 @@ struct FinalText: View {
             )
             .toolbarBackground(Color("tabBar"), for: .navigationBar)
             .toolbarBackground(.visible, for: .navigationBar)
-            .onAppear(){
-                text = globals.sentence.wordsAsString.joined(separator: " ")
+        }.onAppear(){
+            if(globals.alwaysRemakeSentence){
+                isAIselected = true
             }
-            VStack{
-                Spacer()
-                if(isProgressbarVisible){
-                    ProgressView(value: progress)
-                        .frame(height: 20)
-                        .progressViewStyle(.linear)
-                        .accentColor(Color("tabBar"))
-                        .padding(.horizontal)
-                }
-                Button {
-                    if(isButtonEnabled){
-                        isButtonEnabled = false
-                        speakText(text)
-                        globals.generator.impactOccurred()
-                    }
-                } label: {
-                    Label(
-                        "Speak it!",
-                        systemImage: "text.bubble"
-                    )
-                    .frame(maxWidth: .infinity)
-                    .padding()
-                    .background(Color("tabBar"))
-                    .foregroundColor(isButtonEnabled ? .white : .gray)
-                    .cornerRadius(10)
-                    .padding(.horizontal)
-                }
-                .disabled(!isButtonEnabled)
-                
-            }
-            .background(Color("bgd"))
         }
     }
-    
     
     private func dismiss() {
         globals.isPresentedFinalText.toggle()
@@ -94,20 +107,23 @@ struct FinalText: View {
     
     func speakText(_ text: String) {
         globals.tts.setVoice(globals.selectedVoice)
-        globals.tts.setRateRatio(globals.rate)
+        globals.tts.setRateRatio(globals.voiceRate)
         globals.tts.speak(text)
         Task {
             for await prog in globals.tts.speakingProgress() {
                 withAnimation(.bouncy){
                     progress = prog
                 }
-                if prog == 1.0 {
+                if prog >= 1 {
                     withAnimation(.linear){
                         isProgressbarVisible = false
                     }
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                        isButtonEnabled = true
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+                        withAnimation(.linear){
+                            isButtonEnabled = true
+                        }
                     }
+                    break
                 } else {
                     withAnimation(.linear){
                         isProgressbarVisible = true
@@ -115,8 +131,8 @@ struct FinalText: View {
                     }
                 }
             }
+            progress = 0
         }
-        progress = 0
     }
 }
 
@@ -124,3 +140,4 @@ struct FinalText: View {
     FinalText()
         .environmentObject(Globals())
 }
+
