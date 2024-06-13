@@ -13,7 +13,7 @@ struct AISection: View {
     @Binding var apiAnswer: String
     @State var apiAnswerCharacters = ""
     @State var isAPICalling = false
-    @State var isAlertPresented = false
+    @Binding var isAlertPresented: Bool
     let timer = Timer.publish(every: 0.03, tolerance: 0.1, on: .main, in: .common).autoconnect()
     
     var body: some View {
@@ -102,32 +102,6 @@ struct AISection: View {
             }
         }
         .buttonStyle(BorderlessButtonStyle())
-        .alert("OpenAI-Key not set", isPresented: $isAlertPresented) {
-            Button("Cancel", role: .cancel) {
-                isAlertPresented = false
-            }
-            Button(action: {
-                isAlertPresented = false
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-                    globals.isPresentedFinalText = false
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                        globals.isShowingSettings = true
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                            withAnimation(.linear){
-                                globals.isAISettingsViewHighlighted = true
-                            }
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                                withAnimation(.linear){
-                                    globals.isAISettingsViewHighlighted = false
-                                }
-                            }
-                        }
-                    }
-                }
-            }, label: {
-                Text("Add Key")
-            })
-        }
         .onAppear(perform: {
             if(globals.alwaysRemakeSentence){
                 if(globals.openAIFreeRequests >= 1 || globals.openAIAPIKey != nil){
