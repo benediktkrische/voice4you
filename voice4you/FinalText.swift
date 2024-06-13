@@ -15,6 +15,7 @@ struct FinalText: View {
     @State var progress: Double = 0
     @State var isButtonEnabled = true
     @State var isProgressbarVisible = false
+    @State var isAlertPresented = false
     @State var isAIselected = true
     @State var apiAnswer = ""
     
@@ -40,7 +41,7 @@ struct FinalText: View {
                             }
                     }
                     if (globals.isAIEnabled){
-                        AISection(isAIselected: $isAIselected, apiAnswer: $apiAnswer)
+                        AISection(isAIselected: $isAIselected, apiAnswer: $apiAnswer, isAlertPresented: $isAlertPresented)
                     }
                 }
                 VStack{
@@ -98,6 +99,32 @@ struct FinalText: View {
             if(globals.alwaysRemakeSentence){
                 isAIselected = true
             }
+        }
+        .alert("OpenAI-Key not set", isPresented: $isAlertPresented) {
+            Button("Cancel", role: .cancel) {
+                isAlertPresented = false
+            }
+            Button(action: {
+                isAlertPresented = false
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                    globals.isPresentedFinalText = false
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                        globals.isShowingSettings = true
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                            withAnimation(.linear){
+                                globals.isAISettingsViewHighlighted = true
+                            }
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                                withAnimation(.linear){
+                                    globals.isAISettingsViewHighlighted = false
+                                }
+                            }
+                        }
+                    }
+                }
+            }, label: {
+                Text("Add Key")
+            })
         }
     }
     
