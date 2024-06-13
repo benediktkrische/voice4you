@@ -52,47 +52,19 @@ struct FinalText: View {
                             .accentColor(Color("tabBar"))
                             .padding(.horizontal)
                     }
-                    Button {
-                        if(isButtonEnabled){
-                            isButtonEnabled = false
-                            if(apiAnswer == "" || !isAIselected){
-                                speakText(globals.sentence.wordsAsString.joined(separator: " "))
-                            }else{
-                                speakText(apiAnswer)
-                            }
-                            globals.generator.impactOccurred()
-                        }
-                    } label: {
-                        Label(
-                            "Speak it!",
-                            systemImage: "text.bubble"
-                        )
-                        .frame(maxWidth: .infinity)
-                        .padding()
-                        .background(Color("tabBar"))
-                        .foregroundColor(isButtonEnabled ? .white : .gray)
-                        .cornerRadius(10)
-                        .padding(.horizontal)
+                    BottomBar(isButtonEnabled: $isButtonEnabled, apiAnswer: $apiAnswer, isAIselected: $isAIselected) { text in
+                        speakText(text)
                     }
-                    .disabled(!isButtonEnabled)
+                    .padding(.bottom)
                 }
-                .padding(.horizontal)
-                
             }
+            .ignoresSafeArea(edges: .bottom)
             .scrollDisabled(true)
             .scrollContentBackground(.hidden)
             .background(Color("bgd"))
             .navigationTitle("Generate Your Sentence")
             .toolbarColorScheme(.dark, for: .navigationBar)
             .navigationBarTitleDisplayMode(.inline)
-            .navigationBarItems(trailing: Button(action: {
-                dismiss()
-            }, label: {
-                Image(systemName: "xmark")
-                    .foregroundStyle(.white)
-                    .fontWeight(.bold)
-            })
-            )
             .toolbarBackground(Color("tabBar"), for: .navigationBar)
             .toolbarBackground(.visible, for: .navigationBar)
         }.onAppear(){
@@ -163,8 +135,80 @@ struct FinalText: View {
     }
 }
 
+struct BottomBar: View {
+    @EnvironmentObject var globals: Globals
+    @Binding var isButtonEnabled: Bool
+    @Binding var apiAnswer: String
+    @Binding var isAIselected: Bool
+    var speakText: (String) -> Void
+    
+    var body: some View {
+        HStack{
+            Spacer()
+            Button(action: {
+                globals.isPresentedFinalText.toggle()
+                globals.generator.impactOccurred()
+            }, label: {
+                ZStack{
+                    Circle()
+                        .frame(width: 60, height: 60)
+                        .foregroundStyle(globals.selectedTab.color)
+                    Image(systemName: "arrow.left")
+                        .foregroundStyle(Color("tabBarElements"))
+                        .font(.system(size: 34))
+                        .shadow(radius: 5)
+                }
+            })
+            ZStack{
+                HStack{
+                    RoundedRectangle(cornerRadius: 40)
+                        .frame(width: nil, height: 60)
+                        .foregroundStyle(globals.selectedTab.color)
+                        
+                    Spacer()
+                }
+                HStack{
+                    Spacer()
+                    Rectangle()
+                        .frame(width: 60, height: 60)
+                        .foregroundStyle(globals.selectedTab.color)
+                }
+            }
+            .frame(width: UIScreen.main.bounds.width - 80)
+            .overlay(content:  {
+                Button {
+                    if(isButtonEnabled){
+                        isButtonEnabled = false
+                        if(apiAnswer == "" || !isAIselected){
+                            speakText(globals.sentence.wordsAsString.joined(separator: " "))
+                        }else{
+                            speakText(apiAnswer)
+                        }
+                        globals.generator.impactOccurred()
+                    }
+                } label: {
+                    Label(
+                        "Speak it!",
+                        systemImage: "text.bubble"
+                    )
+                    .frame(maxWidth: .infinity)
+                    .padding()
+                    .background(Color("tabBar"))
+                    .foregroundColor(isButtonEnabled ? .white : .gray)
+                    .cornerRadius(30)
+                    .padding(.horizontal)
+                }
+                .disabled(!isButtonEnabled)
+            })
+        }
+    }
+}
+
 #Preview {
+    /*
+    BottomBar(isButtonEnabled: .constant(true), apiAnswer: .constant(""), isAIselected: .constant(false), speakText: {_ in })
+        .environmentObject(Globals())
+     */
     FinalText()
         .environmentObject(Globals())
 }
-
