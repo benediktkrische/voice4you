@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct Support: View {
+    @EnvironmentObject var globals: Globals
+    
     var body: some View {
         VStack{
             Text("If you have any questions, please contact us at:")
@@ -17,7 +19,7 @@ struct Support: View {
             .tint(.white)
             .frame(maxWidth: .infinity)
             .padding()
-            .background(Color("tabBar"))
+            .background(globals.color.dark)
             .cornerRadius(10)
             .padding(.horizontal)
             .onTapGesture {
@@ -31,7 +33,7 @@ struct Support: View {
             Text("Github - Voice4you")
             .frame(maxWidth: .infinity)
             .padding()
-            .background(Color("tabBar"))
+            .background(globals.color.dark)
             .foregroundColor(.white)
             .cornerRadius(10)
             .padding(.horizontal)
@@ -45,4 +47,5 @@ struct Support: View {
 
 #Preview {
     Support()
+        .environmentObject(Globals())
 }

@@ -18,11 +18,11 @@ struct SettingsVoiceView: View {
                     SettingsYourVoiceView(showText: true)
                     Spacer()
                 }
-                .background(Color("bgd"))
+                .background(globals.color.light)
                 .navigationTitle("Change your voice")
                 .toolbarColorScheme(.dark, for: .navigationBar)
                 .navigationBarTitleDisplayMode(.large)
-                .toolbarBackground(Color("tabBar"), for: .navigationBar)
+                .toolbarBackground(globals.color.dark, for: .navigationBar)
                 .toolbarBackground(.visible, for: .navigationBar)
             }, label: {
                 HStack{
@@ -39,11 +39,11 @@ struct SettingsVoiceView: View {
                     SettingsVoiceRateView(showText: true)
                     Spacer()
                 }
-                .background(Color("bgd"))
+                .background(globals.color.light)
                 .navigationTitle("Change your speed")
                 .toolbarColorScheme(.dark, for: .navigationBar)
                 .navigationBarTitleDisplayMode(.large)
-                .toolbarBackground(Color("tabBar"), for: .navigationBar)
+                .toolbarBackground(globals.color.dark, for: .navigationBar)
                 .toolbarBackground(.visible, for: .navigationBar)
             }, label: {
                 HStack{

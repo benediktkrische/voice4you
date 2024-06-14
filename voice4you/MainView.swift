@@ -38,7 +38,7 @@ struct MainView: View {
                         Spacer()
                         LinearGradient(stops: [
                             Gradient.Stop(color: .init(white: 1, opacity: 0), location: 0),
-                            Gradient.Stop(color: Color("bgd"), location: 1),
+                            Gradient.Stop(color: globals.color.light, location: 1),
                         ], startPoint: .top, endPoint: .bottom)
                         .frame(height: 20)
                     }
@@ -48,7 +48,7 @@ struct MainView: View {
                 TabBar()
                     .padding(.bottom)
             }
-            .background(Color("bgd"))
+            .background(globals.color.light)
             .navigationBarTitleDisplayMode(.inline)
             .toolbarColorScheme(.dark, for: .navigationBar)
             //Items toolbar
@@ -98,10 +98,10 @@ struct MainView: View {
             //disable dark mode
             .preferredColorScheme(.light)
             //Color toolbar
-            .toolbarBackground(Color("tabBar"), for: .navigationBar)
+            .toolbarBackground(globals.color.dark, for: .navigationBar)
             .toolbarBackground(.visible, for: .navigationBar)
             //Color Stack
-            .background(Color("bgd"))
+            .background(globals.color.light)
             .scrollContentBackground(.hidden)
             .ignoresSafeArea(edges: .bottom)
             .navigationDestination(for: Category.self){ category in

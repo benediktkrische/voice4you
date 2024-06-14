@@ -40,7 +40,7 @@ struct SettingsAIView: View {
                             Text("Add API Key")
                         }
                     }
-                    .foregroundStyle(Color("tabBar"))
+                    .foregroundStyle(globals.color.dark)
                     if(isAPIKeyAdding){
                         HStack{
                             TextField("API Key", text: $key)
@@ -53,7 +53,7 @@ struct SettingsAIView: View {
                             Button("Submit"){
                                 saveAPIKey()
                             }
-                            .foregroundStyle(Color("tabBar"))
+                            .foregroundStyle(globals.color.dark)
                         }
                     }
                 }else{
@@ -68,7 +68,7 @@ struct SettingsAIView: View {
                         Button("Reset"){
                             globals.openAIAPIKey = nil
                         }
-                        .foregroundStyle(Color("tabBar"))
+                        .foregroundStyle(globals.color.dark)
                     }
                 }
             } header: {
@@ -119,11 +119,11 @@ struct SettingsAIView: View {
             }
         }
         .scrollContentBackground(.hidden)
-        .background(Color("bgd"))
+        .background(globals.color.light)
         .navigationTitle("AI Settings")
         .toolbarColorScheme(.dark, for: .navigationBar)
         .navigationBarTitleDisplayMode(.inline)
-        .toolbarBackground(Color("tabBar"), for: .navigationBar)
+        .toolbarBackground(globals.color.dark, for: .navigationBar)
         .toolbarBackground(.visible, for: .navigationBar)
         .task() {
             apiRequests = 0

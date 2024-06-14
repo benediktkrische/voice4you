@@ -28,17 +28,28 @@ struct SettingsView: View {
                 } footer: {
                     Text("Try different speeds, to find which suits you best.")
                 }
-                Section(header: Text("AI Settings")){
+                Section(header: Text("Other")){
                     NavigationLink(destination: {
                         SettingsAIView()
                     }, label: {
                         Label {
                             Text("AI Settings")
+                                .foregroundStyle(globals.isAISettingsViewHighlighted ? .blue : .primary)
                         } icon: {
                             Image(systemName: "sparkles")
+                                .foregroundStyle(globals.isAISettingsViewHighlighted ? .blue : globals.color.dark)
                         }
-                        .foregroundStyle(globals.isAISettingsViewHighlighted ? .blue : .primary)
                     })
+                    NavigationLink(destination: {
+                        SettingsColorView()
+                    }, label: {
+                        Label {
+                            Text("Colorscheme")
+                        } icon: {
+                            Image(systemName: "paintpalette")
+                        }
+                    })
+                    
                 }
                 
                 Section(header: Text("About")){
@@ -73,7 +84,7 @@ struct SettingsView: View {
                 }
             }
             .scrollContentBackground(.hidden)
-            .background(Color("bgd"))
+            .background(globals.color.light)
             .navigationTitle("Settings")
             .toolbarColorScheme(.dark, for: .navigationBar)
             .navigationBarTitleDisplayMode(.inline)
@@ -85,10 +96,10 @@ struct SettingsView: View {
                     .fontWeight(.bold)
             })
             )
-            .toolbarBackground(Color("tabBar"), for: .navigationBar)
+            .toolbarBackground(globals.color.dark, for: .navigationBar)
             .toolbarBackground(.visible, for: .navigationBar)
         }
-        .accentColor(Color("tabBar"))
+        .accentColor(globals.color.dark)
         .alert("Are you sure you want to reset the app?", isPresented: $isAlertShown) {
             Button("Cancel", role: .cancel){
                 isAlertShown = false

@@ -43,14 +43,4 @@ enum Tab: Int, CaseIterable, Codable, Hashable {
         case .bookmark: return "Your Favourites"
         }
     }
-    
-    var color: Color {
-        switch self {
-        case .nouns: return Color("tabBar")
-        case .verbs: return Color("tabBar")
-        case .adjectives: return Color("tabBar")
-        case .bubble: return Color("tabBar")
-        case .bookmark: return Color("tabBar")
-        }
-    }
 }
