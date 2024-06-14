@@ -73,6 +73,9 @@ struct voice4youApp: App {
             .onChange(of: globals.isAIEnabled){
                 saveChangings()
             }
+            .onChange(of: globals.color) {
+                saveChangings()
+            }
         }
         .modelContainer(sharedModelContainer)
     }

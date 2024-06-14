@@ -21,14 +21,14 @@ struct CategoryView: View {
             WordList(categoryId: category.id)
                 .toolbarColorScheme(.dark, for: .navigationBar)
                 .preferredColorScheme(.light)
-                .toolbarBackground(Color("tabBar"), for: .navigationBar)
+                .toolbarBackground(globals.color.dark, for: .navigationBar)
                 .toolbarBackground(.visible, for: .navigationBar)
                 .toolbarTitleDisplayMode(.inline)
         }
         
         .navigationTitle(category.name)
         //Color Stack
-        .background(Color("bgd"))
+        .background(globals.color.light)
         .scrollContentBackground(.hidden)
         .navigationBarTitleDisplayMode(.large)
         .toolbar {
@@ -40,7 +40,7 @@ struct CategoryView: View {
                 }
             }
         }
-        .accentColor(Color("tabBar"))
+        .accentColor(globals.color.dark)
     }
 }
 

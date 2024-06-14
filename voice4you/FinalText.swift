@@ -32,7 +32,7 @@ struct FinalText: View {
                             .multilineTextAlignment(.center)
                             .padding()
                             .bold(!isAIselected)
-                            .foregroundStyle(isAIselected ? .black : Color("tabBar"))
+                            .foregroundStyle(isAIselected ? .black : globals.color.dark)
                             .onTapGesture {
                                 if(apiAnswer != ""){
                                     globals.generator.impactOccurred()
@@ -49,7 +49,7 @@ struct FinalText: View {
                         ProgressView(value: progress)
                             .frame(height: 20)
                             .progressViewStyle(.linear)
-                            .accentColor(Color("tabBar"))
+                            .accentColor(globals.color.dark)
                             .padding(.horizontal)
                     }
                     BottomBar(isButtonEnabled: $isButtonEnabled, apiAnswer: $apiAnswer, isAIselected: $isAIselected) { text in
@@ -61,11 +61,11 @@ struct FinalText: View {
             .ignoresSafeArea(edges: .bottom)
             .scrollDisabled(true)
             .scrollContentBackground(.hidden)
-            .background(Color("bgd"))
+            .background(globals.color.light)
             .navigationTitle("Generate Your Sentence")
             .toolbarColorScheme(.dark, for: .navigationBar)
             .navigationBarTitleDisplayMode(.inline)
-            .toolbarBackground(Color("tabBar"), for: .navigationBar)
+            .toolbarBackground(globals.color.dark, for: .navigationBar)
             .toolbarBackground(.visible, for: .navigationBar)
         }.onAppear(){
             if(globals.alwaysRemakeSentence){
@@ -152,7 +152,7 @@ struct BottomBar: View {
                 ZStack{
                     Circle()
                         .frame(width: 60, height: 60)
-                        .foregroundStyle(globals.selectedTab.color)
+                        .foregroundStyle(globals.color.dark)
                     Image(systemName: "arrow.left")
                         .foregroundStyle(Color("tabBarElements"))
                         .font(.system(size: 34))
@@ -163,7 +163,7 @@ struct BottomBar: View {
                 HStack{
                     RoundedRectangle(cornerRadius: 40)
                         .frame(width: nil, height: 60)
-                        .foregroundStyle(globals.selectedTab.color)
+                        .foregroundStyle(globals.color.dark)
                         
                     Spacer()
                 }
@@ -171,7 +171,7 @@ struct BottomBar: View {
                     Spacer()
                     Rectangle()
                         .frame(width: 60, height: 60)
-                        .foregroundStyle(globals.selectedTab.color)
+                        .foregroundStyle(globals.color.dark)
                 }
             }
             .frame(width: UIScreen.main.bounds.width - 80)
@@ -191,12 +191,7 @@ struct BottomBar: View {
                         "Speak it!",
                         systemImage: "text.bubble"
                     )
-                    .frame(maxWidth: .infinity)
-                    .padding()
-                    .background(Color("tabBar"))
                     .foregroundColor(isButtonEnabled ? .white : .gray)
-                    .cornerRadius(30)
-                    .padding(.horizontal)
                 }
                 .disabled(!isButtonEnabled)
             })

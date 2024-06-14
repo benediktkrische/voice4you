@@ -39,7 +39,7 @@ struct AISection: View {
                                 .font(.headline)
                         }
                         .padding()
-                        .foregroundColor(Color("tabBar"))
+                        .foregroundColor(globals.color.dark)
                     })
                     Spacer()
                 }
@@ -57,7 +57,7 @@ struct AISection: View {
                             .multilineTextAlignment(.center)
                             .padding()
                             .bold(isAIselected)
-                            .foregroundStyle(!isAIselected ? .black : Color("tabBar"))
+                            .foregroundStyle(!isAIselected ? .black : globals.color.dark)
                             .onTapGesture {
                                 globals.generator.impactOccurred()
                                 isAIselected = true
@@ -98,7 +98,7 @@ struct AISection: View {
                     isAIselected = true
                 }
                 .font(.callout)
-                .foregroundStyle(Color("tabBar"))
+                .foregroundStyle(globals.color.dark)
             }
         }
         .buttonStyle(BorderlessButtonStyle())

@@ -39,9 +39,10 @@ class Globals: ObservableObject {
     @Published var openAIAPIKey: String? = nil
     @Published var freeOpenAPIKey: String? = nil
     @Published var alwaysRemakeSentence: Bool = false
+    @Published var color: Colors = .green
     
     enum CodingKeys: CodingKey {
-        case sentence, voiceRate, selectedVoice, dateOfFirstAppStart, isFirstAppStart, openAIChatResults, openAIFreeRequests, isAIEnabled, alwaysRemakeSentence
+        case sentence, voiceRate, selectedVoice, dateOfFirstAppStart, isFirstAppStart, openAIChatResults, openAIFreeRequests, isAIEnabled, alwaysRemakeSentence, color
     }
     
     struct CodableGlobals: Codable {
@@ -55,10 +56,11 @@ class Globals: ObservableObject {
         let openAIAPIKey: String?
         let isAIEnabled: Bool?
         let alwaysRemakeSentence: Bool?
+        let color: Colors?
     }
     
     func encode() throws -> Data {
-        let codable = CodableGlobals(sentence: sentence, voiceRate: voiceRate, selectedVoiceIdentifier: selectedVoice.identifier, dateOfFirstAppStart: dateOfFirstAppStart, isFirstAppStart: isFirstAppStart, openAIChatResults: openAIChatResults, openAIFreeRequests: openAIFreeRequests, openAIAPIKey: openAIAPIKey, isAIEnabled: isAIEnabled, alwaysRemakeSentence: alwaysRemakeSentence)
+        let codable = CodableGlobals(sentence: sentence, voiceRate: voiceRate, selectedVoiceIdentifier: selectedVoice.identifier, dateOfFirstAppStart: dateOfFirstAppStart, isFirstAppStart: isFirstAppStart, openAIChatResults: openAIChatResults, openAIFreeRequests: openAIFreeRequests, openAIAPIKey: openAIAPIKey, isAIEnabled: isAIEnabled, alwaysRemakeSentence: alwaysRemakeSentence, color: color)
         let encoder = JSONEncoder()
         return try encoder.encode(codable)
     }
@@ -76,6 +78,7 @@ class Globals: ObservableObject {
         self.openAIAPIKey = codable.openAIAPIKey ?? nil
         self.isAIEnabled = codable.isAIEnabled ?? true
         self.alwaysRemakeSentence = codable.alwaysRemakeSentence ?? false
+        self.color = codable.color ?? .green
     }
     
     init(){}
@@ -112,6 +115,7 @@ class Globals: ObservableObject {
         self.isAIEnabled = values.isAIEnabled
         self.freeOpenAPIKey = Secrets().getFreeApiKey()
         self.alwaysRemakeSentence = values.alwaysRemakeSentence
+        self.color = values.color
         
         let user = "default"
         let label = "API_KEY"

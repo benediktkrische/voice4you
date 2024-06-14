@@ -42,7 +42,7 @@ struct TabBar: View {
                 }
             }
             .frame(width: nil, height: 60)
-        }.background(Color("bgd"))
+        }.background(globals.color.light)
         
     }
 }
@@ -56,14 +56,14 @@ struct TabBarBackgroundWithButton: View {
                     //more radius on purpose
                     RoundedRectangle(cornerRadius: 40)
                         .frame(width: nil, height: 60)
-                        .foregroundStyle(globals.selectedTab.color)
+                        .foregroundStyle(globals.color.dark)
                     
                     Spacer()
                 }
                 HStack{
                     Rectangle()
                         .frame(width: 40, height: 60)
-                        .foregroundStyle(globals.selectedTab.color)
+                        .foregroundStyle(globals.color.dark)
                     Spacer()
                 }
             }.frame(width: UIScreen.main.bounds.width - 80)
@@ -74,7 +74,7 @@ struct TabBarBackgroundWithButton: View {
                 ZStack{
                     Circle()
                         .frame(width: 60, height: 60)
-                        .foregroundStyle(globals.selectedTab.color)
+                        .foregroundStyle(globals.color.dark)
                     Image(systemName: "arrow.right")
                         .foregroundStyle(Color("tabBarElements"))
                         .font(.system(size: 34))
