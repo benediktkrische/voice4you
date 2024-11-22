@@ -24,6 +24,9 @@ public class OpenAICaller{
                 openAIFreeRequests.wrappedValue -= 1
             }else{
                 self.openAI = nil
+                print("No OpenAI API Key provided")
+                print("freeOpenAIAPIKey: \(String(describing: freeOpenAIAPIKey))")
+                print("openAIFreeRequests: %d", openAIFreeRequests.wrappedValue)
             }
         }
         self.saveResult = saveResult

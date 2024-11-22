@@ -124,7 +124,16 @@ struct MainView: View {
 }
 
 #Preview {
+    @Previewable @StateObject var globals = Globals()
     MainView(saveAction: {})
-        .environmentObject(Globals())
+        .environmentObject(globals)
+        .task {
+            do {
+                print("trying")
+                //try await globals.load()
+            } catch {
+                fatalError(error.localizedDescription)
+            }
+        }
         .modelContainer(voice4youApp().sharedModelContainer)
 }

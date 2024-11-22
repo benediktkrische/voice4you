@@ -10,12 +10,12 @@ import SwiftData
 
 @Model
 final class Word {
-    let categoryId: Int
-    let id: Int
-    let name: String
+    var categoryId: Int
+    var id: Int
+    var name: String
     var isStarred: Bool
-    let isStandard: Bool
-    let timestamp: Date
+    var isStandard: Bool
+    var timestamp: Date
     
     init(categoryId: Int, id: Int, name: String = "word", isStarred: Bool = false, isStandard: Bool = false, timestamp: Date = Date()) {
         self.categoryId = categoryId

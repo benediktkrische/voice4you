@@ -10,14 +10,14 @@ import SwiftData
 
 @Model
 final class Category{
-    let id: Int
-    let tabId: Int
-    let name: String
-    let sfSymbolName: String
-    let labelDescription: String
-    let isStarred: Bool
-    let isStandard: Bool
-    let timestamp: Date
+    var id: Int
+    var tabId: Int
+    var name: String
+    var sfSymbolName: String
+    var labelDescription: String
+    var isStarred: Bool
+    var isStandard: Bool
+    var timestamp: Date
     
     init(id: Int, tabId: Int, name: String, sfSymbolName: String = "doc.plaintext.fill", labelDescription: String = "e.g. lorum ipsum", isStandard: Bool = false,isStarred: Bool = false, timestamp: Date = Date()) {
         self.tabId = tabId

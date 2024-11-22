@@ -134,4 +134,5 @@ struct AISection: View {
 #Preview {
     FinalText()
         .environmentObject(Globals())
+    
 }
