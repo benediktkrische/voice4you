@@ -17,8 +17,6 @@ Also watch the [video Demo](https://github.com/benediktkrische/voice4you/assets/
 * Voice customization: Ability to customize the app's voice according to preferences, such as male, female, childlike, etc.
 * Offline usability: The app can be used without an internet connection, ensuring availability in all situations.
 * Ability to customize the words
-
-### In progress:
 * AI capabilities: The app refactors your sentence to make it more coherent and grammatically correct
 
 ---
